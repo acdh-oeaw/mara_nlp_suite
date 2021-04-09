@@ -128,10 +128,10 @@ pip install -r requirements.txt # install python dependencies, will take a while
 
 ## How to run
 
-Either inside the docker container or your machine with a python virtual environment, change to src directory and run an arbitrary pipe. To run an interactive shell, use the pre-defined `pipe_shell`:
+Either inside the docker container or your machine with a python virtual environment, change to src directory and run an arbitrary pipe from [src/pipelining/pipes](src/pipelining/pipes). To run an interactive shell, use the pre-defined `pipe_shell`:
 ```
 cd src
-python main.py --pipe pipe_shell # replace the pipe argument with the name of any module defined under [src/pipelining/pipes](src/pipelining/pipes).
+python main.py --pipe pipe_shell # replace the pipe argument with the name of any module in `pipes`.
 ```
 
 **TODO: Add examples once useful data is made public**
