@@ -2,7 +2,7 @@
 venv/
 venv*
 __pycache__
-/src/log.txt
+src/log.txt
 src/configs/config_dev.py
 src/credentials.py
 scripts_helper/
