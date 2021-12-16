@@ -35,25 +35,28 @@ maxqdata_data = {
         "size": "1499 articles, 13282 annotations.",
         "description": "First batch"
     },
-    "md2": { # Probecodierung mit 50 Texten
+    "md2": { # Probecodierung mit 50 Texten # TODO
     },
-    "md3_SC": { # Vertiefungsanalyse SC
+    "md3": {
         "articles_xml_directory": "../data/maxqdata_data/amc_subcorpus/2020-12-17/101_derived/mara_SocialCompanions/",
         "annotations_xlsx_file_path": "../data/maxqdata_data/annotations_maxqdata/2021 Vertiefungsanalyse/2021-03-04 Codierung_SC_27022021.mx20.xlsx", # vollständige Rohfassung
         "source": (models, ""), # TODO which models / indices were used?
-        "source_selection_logic": "'AF: Social Companions' between 0.99983 and 0.505869, 'TI: Hauptthema' between 1.00000 and 0.562652, LMVR-logic" # see redmine ticket #99471
+        "source_selection_logic": "'AF: Social Companions' between 0.99983 and 0.505869, 'TI: Hauptthema' between 1.00000 and 0.562652, LMVR-logic", # see redmine ticket #99471
+        "description": "Vertiefungsanalyse SC: Social Companions"
     },
-    "md3_SM": { # Vertiefungsanalyse SM
+    "md4": {
         "articles_xml_directory": "../data/maxqdata_data/amc_subcorpus/2020-12-17/101_derived/mara_SozialeMedien/",
         "annotations_xlsx_file_path": None,
         "source": (models, ""), # TODO which models / indices were used?
-        "source_selection_logic": "'AF: Soziale Medien' between 0.999896 and 0.72494, 'TI: Hauptthema' between 1.000000 and 0.515524, LMVR-logic" # see redmine ticket #99471
+        "source_selection_logic": "'AF: Soziale Medien' between 0.999896 and 0.72494, 'TI: Hauptthema' between 1.000000 and 0.515524, LMVR-logic", # see redmine ticket #99471
+        "description": "Vertiefungsanalyse SM: Social Media"
     },
-    "md3_SMSC": { # Vertiefungsanalyse von Texten, die sowohl als SM als auch SC predicted sind
+    "md5": {
         "articles_xml_directory": "../data/maxqdata_data/amc_subcorpus/2020-12-17/101_derived/mara_SozialeMedien_SocialCompanions/",
         "annotations_xlsx_file_path": None,
         "source": (models, ""), # TODO which models / indices were used?
-        "source_selection_logic": "'AF: Soziale Medien' and 'AF: Social Companions' above 0.9, 'TI: Hauptthema' between 1.0 and 0.991806, LMVR-logic" # see redmine ticket #99471
+        "source_selection_logic": "'AF: Soziale Medien' and 'AF: Social Companions' above 0.9, 'TI: Hauptthema' between 1.0 and 0.991806, LMVR-logic", # see redmine ticket #99471
+        "description": "Vertiefungsanalyse SM+SC: Social Media and Social Companions"
     }
 }
 
@@ -157,6 +160,10 @@ gold_data = {
         "source": (prodigy_data, "p5"),
         "size": "300 full articles (excluding none from p5)",
     },
+    "g9": {
+        "path": "../data/gold_data/g9.json"
+        "size:" ""
+    }
 }
 
 models = {
