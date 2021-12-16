@@ -320,6 +320,7 @@ class TransformRule7(TransformRule):
 class TransformRule8(TransformRule):
     # formerly: TransformRule8__s1_tr2_1__s3__s4__s5__s6
 
+    # These replacements seem redundant but they are used to remove all other cats that do not match
     cat_replacements = [
         ("AF: Social Companions", "AF: Social Companions"),
         ("AF: Soziale Medien", "AF: Soziale Medien"),
@@ -336,6 +337,7 @@ class TransformRule9(TransformRule):
 class TransformRule10(TransformRule):
     # formerly: TransformRule10__s3__s4__s5__s6
 
+    # These replacements seem redundant but they are used to remove all other cats that do not match
     cat_replacements = [
         ("TI: Hauptthema", "TI: Hauptthema"),
         ("TI: Nebenthema", "TI: Nebenthema"),

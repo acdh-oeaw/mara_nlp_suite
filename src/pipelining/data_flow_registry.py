@@ -38,24 +38,27 @@ maxqdata_data = {
     "md2": { # Probecodierung mit 50 Texten # TODO
     },
     "md3": {
-        "articles_xml_directory": "../data/maxqdata_data/amc_subcorpus/2020-12-17/101_derived/mara_SocialCompanions/",
-        "annotations_xlsx_file_path": "../data/maxqdata_data/annotations_maxqdata/2021 Vertiefungsanalyse/2021-03-04 Codierung_SC_27022021.mx20.xlsx", # vollständige Rohfassung
+        "articles_xml_directory": "../data/maxqdata_data/amc_subcorpus/2020-12-17_Vertiefungsanalyse/101_derived/mara_SocialCompanions/",
+        "annotations_xlsx_file_path": "../data/maxqdata_data/annotations_maxqdata/2021-05-27_Vertiefungsanalyse/Codierung_SC_Final.xlsx",
         "source": (models, ""), # TODO which models / indices were used?
-        "source_selection_logic": "'AF: Social Companions' between 0.99983 and 0.505869, 'TI: Hauptthema' between 1.00000 and 0.562652, LMVR-logic", # see redmine ticket #99471
+        "source_selection_logic": "'AF: Social Companions' between 0.99983 and 0.505869, 'TI: Hauptthema' between 1.00000 and 0.562652, LMVR-logic", # see redmine ticket #18496
+        "size": "270 articles",
         "description": "Vertiefungsanalyse SC: Social Companions"
     },
     "md4": {
-        "articles_xml_directory": "../data/maxqdata_data/amc_subcorpus/2020-12-17/101_derived/mara_SozialeMedien/",
-        "annotations_xlsx_file_path": None,
+        "articles_xml_directory": "../data/maxqdata_data/amc_subcorpus/2020-12-17_Vertiefungsanalyse/101_derived/mara_SozialeMedien/",
+        "annotations_xlsx_file_path": "../data/maxqdata_data/annotations_maxqdata/2021-05-27_Vertiefungsanalyse/Codierung_SM_Final.xlsx",
         "source": (models, ""), # TODO which models / indices were used?
-        "source_selection_logic": "'AF: Soziale Medien' between 0.999896 and 0.72494, 'TI: Hauptthema' between 1.000000 and 0.515524, LMVR-logic", # see redmine ticket #99471
+        "source_selection_logic": "'AF: Soziale Medien' between 0.999896 and 0.72494, 'TI: Hauptthema' between 1.000000 and 0.515524, LMVR-logic", # see redmine ticket #18496
+        "size": "270 articles",
         "description": "Vertiefungsanalyse SM: Social Media"
     },
     "md5": {
-        "articles_xml_directory": "../data/maxqdata_data/amc_subcorpus/2020-12-17/101_derived/mara_SozialeMedien_SocialCompanions/",
+        "articles_xml_directory": "../data/maxqdata_data/amc_subcorpus/2020-12-17_Vertiefungsanalyse/101_derived/mara_SozialeMedien_SocialCompanions/",
         "annotations_xlsx_file_path": None,
         "source": (models, ""), # TODO which models / indices were used?
-        "source_selection_logic": "'AF: Soziale Medien' and 'AF: Social Companions' above 0.9, 'TI: Hauptthema' between 1.0 and 0.991806, LMVR-logic", # see redmine ticket #99471
+        "source_selection_logic": "'AF: Soziale Medien' and 'AF: Social Companions' above 0.9, 'TI: Hauptthema' between 1.0 and 0.991806, LMVR-logic", # see redmine ticket #18496
+        "size": "10 articles",
         "description": "Vertiefungsanalyse SM+SC: Social Media and Social Companions"
     }
 }
@@ -161,9 +164,17 @@ gold_data = {
         "size": "300 full articles (excluding none from p5)",
     },
     "g9": {
-        "path": "../data/gold_data/g9.json"
-        "size:" ""
-    }
+        "path": "../data/gold_data/g9.json",
+        "maxqdata_specific_processing": maxqdata_manager.transform_to_gold_data_articles,
+        "source": (maxqdata_data, "md3"),
+        "size": "270 articles",
+    },
+    "g10": {
+        "path": "../data/gold_data/g10.json",
+        "maxqdata_specific_processing": maxqdata_manager.transform_to_gold_data_articles,
+        "source": (maxqdata_data, "md4"),
+        "size": "270 articles",
+    },
 }
 
 models = {
@@ -179,30 +190,6 @@ models = {
         "spacy_base_model": "de_core_news_sm",
         "spacy_version": "2.2.4",
         # TODO: Add train_data_size, train_data_hash, eval_data_hash
-    },
-    "mo1_1": {
-        "path": "../data/models/mo1_1",
-        "text_labels": "'Social Companions', 'Soziale Medien', 'Andere Anwendungsfelder'",
-        "source": (gold_data, "g1"), # minus 28 misformed texts
-        "trainer_class": Trainer4,
-        "gold_data_transform_rule": TransformRule1,
-        "train_data_cutoff": 100,
-        "iteration_limit": 40,
-        "exclusive_classes": False,
-        "spacy_base_model": "de_core_news_sm",
-        "spacy_version": "2.2.4",
-    },
-    "mo1_2": {
-        "path": "../data/models/mo1_2",
-        "text_labels": "'Social Companions', 'Soziale Medien', 'Andere Anwendungsfelder'",
-        "source": (gold_data, "g1"), # minus 28 misformed texts
-        "trainer_class": Trainer4,
-        "gold_data_transform_rule": TransformRule1,
-        "train_data_cutoff": 100,
-        "iteration_limit": 40,
-        "exclusive_classes": False,
-        "spacy_base_model": "de_core_news_sm",
-        "spacy_version": "2.2.4",
     },
     "mo2": {
         "path": "../data/models/mo2", #TODO : Fetch from git history
@@ -226,9 +213,11 @@ models = {
         "train_data_cutoff": 100,
         "iteration_limit": 30,
         "exclusive_classes": False,
+        "train_data_size": 1471,
+        "train_data_hash": 311100072,
+        "eval_data_hash": 3211313,
         "spacy_base_model": "de_core_news_sm",
         "spacy_version": "2.2.4",
-        # TODO: Add train_data_size, train_data_hash, eval_data_hash
     },
     "mo4": {
         "path": "../data/models/mo4", #formerly t4__tdc50__s1_articles__tr2_1__sc_sm_alle_anwendungsfelder or t4__tdc50__s1__tr2_1__sc_sm_alle_anwendungsfelder
@@ -239,9 +228,11 @@ models = {
         "train_data_cutoff": 50,
         "iteration_limit": 30,
         "exclusive_classes": False,
+        "train_data_size": 736,
+        "train_data_hash": 311165603,
+        "eval_data_hash": 312672931,
         "spacy_base_model": "de_core_news_sm",
         "spacy_version": "2.2.4",
-        # TODO: Add train_data_size, train_data_hash, eval_data_hash
     },
     "mo5": {
         "path": "../data/models/mo5", #formerly t4__tdc100__s1_articles__tr3__tonalitaet or t4__tdc100__s1__tr3__tonalitaet
@@ -252,31 +243,9 @@ models = {
         "train_data_cutoff": 100,
         "iteration_limit": 30,
         "exclusive_classes": True,
-        "spacy_base_model": "de_core_news_sm",
-        "spacy_version": "2.2.4",
-        # TODO: Add train_data_size, train_data_hash, eval_data_hash
-    },
-    "mo5_1": { # TODO: Delete once not needed anymore. This is a duplicated model of mo5 to check for inconsistencies
-        "path": "../data/models/mo5_1",
-        "text_labels": "'T: negativ', 'T: ambivalent', 'T: positiv', 'T: keine Tonalität ggü. KI, Algorithmen, Automatisierung'",
-        "source": (gold_data, "g1"), # minus 28 misformed texts
-        "trainer_class": Trainer4,
-        "gold_data_transform_rule": TransformRule3,
-        "train_data_cutoff": 100,
-        "iteration_limit": 30,
-        "exclusive_classes": True,
-        "spacy_base_model": "de_core_news_sm",
-        "spacy_version": "2.2.4",
-    },
-    "mo5_2": { # TODO: Delete once not needed anymore. This is a duplicated model of mo5 to check for inconsistencies
-        "path": "../data/models/mo5_2",
-        "text_labels": "'T: negativ', 'T: ambivalent', 'T: positiv', 'T: keine Tonalität ggü. KI, Algorithmen, Automatisierung'",
-        "source": (gold_data, "g1"), # minus 28 misformed texts
-        "trainer_class": Trainer4,
-        "gold_data_transform_rule": TransformRule3,
-        "train_data_cutoff": 100,
-        "iteration_limit": 30,
-        "exclusive_classes": True,
+        "train_data_size": 1471,
+        "train_data_hash": 311100072,
+        "eval_data_hash": 3211313,
         "spacy_base_model": "de_core_news_sm",
         "spacy_version": "2.2.4",
     },
@@ -289,9 +258,11 @@ models = {
         "train_data_cutoff": 50,
         "iteration_limit": 30,
         "exclusive_classes": True,
+        "train_data_size": 736,
+        "train_data_hash": 311165603,
+        "eval_data_hash": 312672931,
         "spacy_base_model": "de_core_news_sm",
         "spacy_version": "2.2.4",
-        # TODO: Add train_data_size, train_data_hash, eval_data_hash
     },
     "mo7": {
         "path": "../data/models/mo7", #formerly t4__tdc100__s1_articles__tr5__thematisierungsintensitaet or t4__tdc100__s1__tr5__thematisierungsintensitaet
@@ -302,31 +273,9 @@ models = {
         "train_data_cutoff": 100,
         "iteration_limit": 30,
         "exclusive_classes": True,
-        "spacy_base_model": "de_core_news_sm",
-        "spacy_version": "2.2.4",
-        # TODO: Add train_data_size, train_data_hash, eval_data_hash
-    },
-    "mo7_1": { # TODO: Delete once not needed anymore. This is a duplicated model of mo7 to check for inconsistencies
-        "path": "../data/models/mo7_1",
-        "text_labels": "'TI: Hauptthema', 'TI: Nebenthema', 'TI: Verweis'",
-        "source": (gold_data, "g1"), # minus 28 misformed texts
-        "trainer_class": Trainer4,
-        "gold_data_transform_rule": TransformRule5,
-        "train_data_cutoff": 100,
-        "iteration_limit": 30,
-        "exclusive_classes": True,
-        "spacy_base_model": "de_core_news_sm",
-        "spacy_version": "2.2.4",
-    },
-    "mo7_2": { # TODO: Delete once not needed anymore. This is a duplicated model of mo7 to check for inconsistencies
-        "path": "../data/models/mo7_2",
-        "text_labels": "'TI: Hauptthema', 'TI: Nebenthema', 'TI: Verweis'",
-        "source": (gold_data, "g1"), # minus 28 misformed texts
-        "trainer_class": Trainer4,
-        "gold_data_transform_rule": TransformRule5,
-        "train_data_cutoff": 100,
-        "iteration_limit": 30,
-        "exclusive_classes": True,
+        "train_data_size": 1471,
+        "train_data_hash": 311100072,
+        "eval_data_hash": 3211313,
         "spacy_base_model": "de_core_news_sm",
         "spacy_version": "2.2.4",
     },
@@ -339,12 +288,14 @@ models = {
         "train_data_cutoff": 50,
         "iteration_limit": 30,
         "exclusive_classes": True,
+        "train_data_size": 736,
+        "train_data_hash": 311165603,
+        "eval_data_hash": 312672931,
         "spacy_base_model": "de_core_news_sm",
         "spacy_version": "2.2.4",
-        # TODO: Add train_data_size, train_data_hash, eval_data_hash
     },
-    "mo9": {
-        "path": "../data/models/mo9", #retrained with (supposedly) equivalent parameters as t4__tdc100__s1_articles_tr2_1_tr8__s2_tr9__s3_tr8__s4_tr8__s5_tr8__s6_tr8
+    "mo9": { # biggest model for 'Anwendungsfelder', merged from several sources
+        "path": "../data/models/mo9", # formerly t4__tdc100__s1_articles_tr2_1_tr8__s2_tr9__s3_tr8__s4_tr8__s5_tr8__s6_tr8 , where sX means dataset and trX means TransformationRule
         "text_labels": "'AF: Social Companions', 'AF: Soziale Medien'",
         "source": [(gold_data, "g1"), (gold_data, "g4"), (gold_data, "g5"), (gold_data, "g6"), (gold_data, "g7"), (gold_data, "g8")],
         "trainer_class": Trainer4,
@@ -358,16 +309,20 @@ models = {
         "spacy_base_model": None, # TODO
         "spacy_version": "2.3",
     },
-    "mo10": { # TODO: re-train this
-        "path": "../data/models/mo10", #retrained with (supposedly) equivalent parameters as t4__tdc100__s1_articles_tr5__s3_tr10__s4_tr10__s5_tr10__s6_tr10
-        "text_labels": None, #TODO
-        "source": None, #TODO
+    "mo10": { # biggest model for 'Thematisierungsintensität', merged from several sources
+        "path": "../data/models/mo10", #formerly t4__tdc100__s1_articles_tr5__s3_tr10__s4_tr10__s5_tr10__s6_tr10 , where sX means dataset and trX means TransformationRule
+        "text_labels": "TI: Hauptthema, TI: Nebenthema, TI: Verweis",
+        "source": [(gold_data, "g1"), (gold_data, "g5"), (gold_data, "g6"), (gold_data, "g7"), (gold_data, "g8")],
         "trainer_class": Trainer4,
-        "gold_data_transform_rule": None, #TODO
+        "gold_data_transform_rule": [TransformRule5, TransformRule10, TransformRule10, TransformRule10, TransformRule10],
         "train_data_cutoff": 100,
         "iteration_limit": 20,
         "exclusive_classes": True,
+        "train_data_size": 2803,
+        "train_data_hash": 319029941,
+        "eval_data_hash": 3211313,
         "spacy_base_model": None, # TODO
+        "spacy_version": "2.3",
     },
     "mo11": {
         "path": "../data/models/mo11",
@@ -401,7 +356,7 @@ models = {
         "gold_data_transform_rule": TransformRule11, 
         "train_data_cutoff": 100, 
         "train_data_length": 1499, 
-        "train_data_hash": "311886498", 
+        "train_data_hash": 311886498,
         "iteration_limit": 45, 
         "dropout": 0.2, 
         "exclusive_classes": False, 
@@ -429,37 +384,37 @@ model_indices = {
     # All of the following indices were done on corpus "amc_corpora['mara002']" with a nlp model
     "i1": {
         "table_name": "i1", #formerly part of index_1__mara002__t4__tdc100__s1__tr2_1_tr3_tr5
-        "col_names": ((models, "mo3"), "text_labels"),
+        "col_names": "'AF: Social Companions', 'AF: Soziale Medien', and all other 31 AF",
         "source": (models, "mo3"),
         "index_creation_logic": model_indexer.index_articles
     },
     "i2": {
         "table_name": "i2", #formerly part of index_1__mara002__t4__tdc100__s1__tr2_1_tr3_tr5
-        "col_names": ((models, "mo5"), "text_labels"),
+        "col_names": "'T: negativ', 'T: ambivalent', 'T: positiv', 'T: keine Tonalität ggü. KI, Algorithmen, Automatisierung'",
         "source": (models, "mo5"),
         "index_creation_logic": model_indexer.index_articles
     },
     "i3": {
         "table_name": "i3", #formerly part of index_1__mara002__t4__tdc100__s1__tr2_1_tr3_tr5
-        "col_names": ((models, "mo7"), "text_labels"),
+        "col_names": "TI: Hauptthema, TI: Nebenthema, TI: Verweis",
         "source": (models, "mo7"),
         "index_creation_logic": model_indexer.index_articles
     },
     "i4": {
         "table_name": "i4", #formerly index_3__mara002__af
-        "col_names": ((models, "mo9"), "text_labels"),
+        "col_names": "AF: Social Companions, AF: Soziale Medien",
         "source": (models, "mo9"),
         "index_creation_logic": model_indexer.index_articles
     },
     "i5": {
         "table_name": "i5", #formerly index_3__mara002__ti
-        "col_names": ((models, "mo10"), "text_labels"),
+        "col_names": "TI: Hauptthema, TI: Nebenthema, TI: Verweis",
         "source": (models, "mo10"),
         "index_creation_logic": model_indexer.index_articles
     },
     "i6": {
         "table_name": "i6",
-        "col_names": ((models, "mo11"), "text_labels"),
+        "col_names": "Verantwortungsreferenz",
         "source": (models, "mo11"),
         "index_creation_logic": model_indexer.index_articles
     },
@@ -473,41 +428,3 @@ evaluations = {
     # TODO
 }
 
-model_compare_indices = {
-    "mci1_1": {
-        "table_name": "mci1_1",
-        "col_names": ((models, "mo5_1"), "text_labels"),
-        "source": (models, "mo5_1"), # Not commited since this is redundant model for local testing
-        "index_creation_logic": model_indexer.index_articles
-    },
-    "mci1_2": {
-        "table_name": "mci1_2",
-        "col_names": ((models, "mo5_2"), "text_labels"),
-        "source": (models, "mo5_2"), # Not commited since this is redundant model for local testing
-        "index_creation_logic": model_indexer.index_articles
-    },
-    "mci2_1": {
-        "table_name": "mci2_1",
-        "col_names": ((models, "mo7_1"), "text_labels"),
-        "source": (models, "mo7_1"), # Not commited since this is redundant model for local testing
-        "index_creation_logic": model_indexer.index_articles
-    },
-    "mci2_2": {
-        "table_name": "mci2_2",
-        "col_names": ((models, "mo7_2"), "text_labels"),
-        "source": (models, "mo7_2"), # Not commited since this is redundant model for local testing
-        "index_creation_logic": model_indexer.index_articles
-    },
-    "mci3_1": {
-        "table_name": "mci3_1",
-        "col_names": ((models, "mo1_1"), "text_labels"),
-        "source": (models, "mo1_1"), # Not commited since this is redundant model for local testing
-        "index_creation_logic": model_indexer.index_articles
-    },
-    "mci3_2": {
-        "table_name": "mci3_2",
-        "col_names": ((models, "mo1_2"), "text_labels"),
-        "source": (models, "mo1_2"), # Not commited since this is redundant model for local testing
-        "index_creation_logic": model_indexer.index_articles
-    },
-}
