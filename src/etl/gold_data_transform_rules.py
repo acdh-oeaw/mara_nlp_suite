@@ -377,3 +377,13 @@ class TransformRule12(TransformRule):
     cat_replacements = [
         ("VR: enthalten", "Verantwortungsreferenz"), 
     ]
+
+
+class TransformRule13(TransformRule):
+
+    cat_replacements = [
+        ("T: negativ", "T: negativ"),
+        ("T: ambivalent", "T: ambivalent"),
+        ("T: positiv", "T: positiv"),
+        ("T: keine Tonalität ggü. KI, Algorithmen, Automatisierung", "T: keine Tonalität ggü. KI, Algorithmen, Automatisierung"),
+    ]

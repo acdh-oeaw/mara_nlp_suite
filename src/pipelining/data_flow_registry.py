@@ -376,6 +376,21 @@ models = {
         "spacy_base_model": "de_core_news_sm", 
         "spacy_version": "2.2.4", 
     },
+    "mo15": {
+        "path": "../data/models/mo15",
+        "text_labels": "Tonalität: 'T: negativ', 'T: ambivalent', 'T: positiv', 'T: keine Tonalität ggü. KI, Algorithmen, Automatisierung'",
+        "source": (gold_data, "g1", "g5", "g6", "g7", "g8"),
+        "trainer_class": Trainer4,
+        "gold_data_transform_rule": (TransformRule3, TransformRule13, TransformRule13, TransformRule13, TransformRule13),
+        "train_data_cutoff": 100,
+        "train_data_length": None, # TODO final
+        "train_data_hash": None, # TODO final
+        "iteration_limit": 30, # TODO final
+        "dropout": 0.2,
+        "exclusive_classes": True,
+        "spacy_base_model": "de_core_news_lg",
+        "spacy_version": "2.3",
+    },
 }
 
 model_indices = {
