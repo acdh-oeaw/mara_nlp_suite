@@ -79,21 +79,21 @@ prodigy_data = {
         "dataset_name": "p2", #formerly s3
         "text_labels": "Anwendungsfelder (SC,SM,Alle anderen einzeln), Tonalität, Thematisierungsintensität",
         "source": (model_indices, ["i1", "i2", "i3"]),
-        "source_selection_logic": "sort by SC+SM desc", # TODO: Fetch logic from git history, re-integrate it into current code so that it can be referenced here and re-run.
+        "source_selection_logic": "sort by SC+SM desc",
         "size": "412 articles",
     },
     "p3": {
         "dataset_name": "p3", #formerly s4
         "text_labels": "Anwendungsfelder (SC,SM,Alle anderen einzeln), Tonalität, Thematisierungsintensität",
         "source": (model_indices, ["i1", "i2", "i3"]),
-        "source_selection_logic": "sort by SM desc", # TODO: Fetch logic from git history, re-integrate it into current code so that it can be referenced here and re-run.
+        "source_selection_logic": "sort by SM desc",
         "size": "202 articles",
     },
     "p4": {
         "dataset_name": "p4", #formerly s5
         "text_labels": "Anwendungsfelder (SC,SM,Alle anderen einzeln), Tonalität, Thematisierungsintensität, 'af_sc_sm'", # TODO: In the prodigy dataset is an additional label 'af_sc_sm'; investigate
         "source": (model_indices, ["i1", "i2", "i3"]),
-        "source_selection_logic": "sort by SC+SM asc", # TODO: Fetch logic from git history, re-integrate it into current code so that it can be referenced here and re-run.
+        "source_selection_logic": "sort by SC+SM asc",
         "size": "392 articles",
     },
     "p5": {
@@ -163,13 +163,13 @@ gold_data = {
         "source": (prodigy_data, "p5"),
         "size": "300 full articles (excluding none from p5)",
     },
-    "g9": {
+    "g9": { # Vertiefungsanalyse 'Social Companions'
         "path": "../data/gold_data/g9.json",
         "maxqdata_specific_processing": maxqdata_manager.transform_to_gold_data_articles,
         "source": (maxqdata_data, "md3"),
         "size": "270 articles",
     },
-    "g10": {
+    "g10": { # Vertiefungsanalyse 'Social Media'
         "path": "../data/gold_data/g10.json",
         "maxqdata_specific_processing": maxqdata_manager.transform_to_gold_data_articles,
         "source": (maxqdata_data, "md4"),
@@ -180,7 +180,7 @@ gold_data = {
 models = {
     "mo1": {
         "path": "../data/models/mo1", #TODO : Fetch from git history
-        "text_labels": "'Social Companions', 'Soziale Medien', 'Andere Anwendungsfelder'",
+        "text_labels": "Anwendungsfelder: 'Social Companions', 'Soziale Medien', 'Andere Anwendungsfelder'",
         "source": (gold_data, "g1"), # minus 28 misformed texts
         "trainer_class": Trainer4,
         "gold_data_transform_rule": TransformRule1,
@@ -193,7 +193,7 @@ models = {
     },
     "mo2": {
         "path": "../data/models/mo2", #TODO : Fetch from git history
-        "text_labels": "'Social Companions', 'Soziale Medien', 'Andere Anwendungsfelder'",
+        "text_labels": "Anwendungsfelder: 'Social Companions', 'Soziale Medien', 'Andere Anwendungsfelder'",
         "source": (gold_data, "g1"), # minus 28 misformed texts
         "trainer_class": Trainer4,
         "gold_data_transform_rule": TransformRule1,
@@ -206,7 +206,7 @@ models = {
     },
     "mo3": {
         "path": "../data/models/mo3", #formerly t4__tdc100__s1_articles__tr2_1__sc_sm_alle_anwendungsfelder or t4__tdc100__s1__tr2_1__sc_sm_alle_anwendungsfelder
-        "text_labels": "'AF: Social Companions', 'AF: Soziale Medien', and all other 31 AF",
+        "text_labels": "Anwendungsfelder: 'AF: Social Companions', 'AF: Soziale Medien', and all other 31 AF",
         "source": (gold_data, "g1"), # minus 28 misformed texts
         "trainer_class": Trainer4,
         "gold_data_transform_rule": TransformRule2,
@@ -221,7 +221,7 @@ models = {
     },
     "mo4": {
         "path": "../data/models/mo4", #formerly t4__tdc50__s1_articles__tr2_1__sc_sm_alle_anwendungsfelder or t4__tdc50__s1__tr2_1__sc_sm_alle_anwendungsfelder
-        "text_labels": "'AF: Social Companions', 'AF: Soziale Medien', and all other 31 AF",
+        "text_labels": "Anwendungsfelder: 'AF: Social Companions', 'AF: Soziale Medien', and all other 31 AF",
         "source": (gold_data, "g1"), # minus 28 misformed texts
         "trainer_class": Trainer4,
         "gold_data_transform_rule": TransformRule2,
@@ -236,7 +236,7 @@ models = {
     },
     "mo5": {
         "path": "../data/models/mo5", #formerly t4__tdc100__s1_articles__tr3__tonalitaet or t4__tdc100__s1__tr3__tonalitaet
-        "text_labels": "'T: negativ', 'T: ambivalent', 'T: positiv', 'T: keine Tonalität ggü. KI, Algorithmen, Automatisierung'",
+        "text_labels": "Tonalität: 'T: negativ', 'T: ambivalent', 'T: positiv', 'T: keine Tonalität ggü. KI, Algorithmen, Automatisierung'",
         "source": (gold_data, "g1"), # minus 28 misformed texts
         "trainer_class": Trainer4,
         "gold_data_transform_rule": TransformRule3,
@@ -251,7 +251,7 @@ models = {
     },
     "mo6": {
         "path": "../data/models/mo6", #formerly t4__tdc50__s1_articles__tr3__tonalitaet or t4__tdc50__s1__tr3__tonalitaet
-        "text_labels": "'T: negativ', 'T: ambivalent', 'T: positiv', 'T: keine Tonalität ggü. KI, Algorithmen, Automatisierung'",
+        "text_labels": "Tonalität: 'T: negativ', 'T: ambivalent', 'T: positiv', 'T: keine Tonalität ggü. KI, Algorithmen, Automatisierung'",
         "source": (gold_data, "g1"), # minus 28 misformed texts
         "trainer_class": Trainer4,
         "gold_data_transform_rule": TransformRule3,
@@ -266,7 +266,7 @@ models = {
     },
     "mo7": {
         "path": "../data/models/mo7", #formerly t4__tdc100__s1_articles__tr5__thematisierungsintensitaet or t4__tdc100__s1__tr5__thematisierungsintensitaet
-        "text_labels": "'TI: Hauptthema', 'TI: Nebenthema', 'TI: Verweis'",
+        "text_labels": "Thematisierungsintensität: 'TI: Hauptthema', 'TI: Nebenthema', 'TI: Verweis'",
         "source": (gold_data, "g1"), # minus 28 misformed texts
         "trainer_class": Trainer4,
         "gold_data_transform_rule": TransformRule5,
@@ -281,7 +281,7 @@ models = {
     },
     "mo8": {
         "path": "../data/models/mo8", #formerly t4__tdc50__s1_articles__tr5__thematisierungsintensitaet or t4__tdc50__s1__tr5__thematisierungsintensitaet
-        "text_labels": "'TI: Hauptthema', 'TI: Nebenthema', 'TI: Verweis'",
+        "text_labels": "Thematisierungsintensität: 'TI: Hauptthema', 'TI: Nebenthema', 'TI: Verweis'",
         "source": (gold_data, "g1"), # minus 28 misformed texts
         "trainer_class": Trainer4,
         "gold_data_transform_rule": TransformRule5,
@@ -296,7 +296,7 @@ models = {
     },
     "mo9": { # biggest model for 'Anwendungsfelder', merged from several sources
         "path": "../data/models/mo9", # formerly t4__tdc100__s1_articles_tr2_1_tr8__s2_tr9__s3_tr8__s4_tr8__s5_tr8__s6_tr8 , where sX means dataset and trX means TransformationRule
-        "text_labels": "'AF: Social Companions', 'AF: Soziale Medien'",
+        "text_labels": "Anwendungsfelder: 'AF: Social Companions', 'AF: Soziale Medien'",
         "source": [(gold_data, "g1"), (gold_data, "g4"), (gold_data, "g5"), (gold_data, "g6"), (gold_data, "g7"), (gold_data, "g8")],
         "trainer_class": Trainer4,
         "gold_data_transform_rule": [(TransformRule2, TransformRule8), TransformRule9, TransformRule8, TransformRule8, TransformRule8, TransformRule8],
@@ -306,12 +306,11 @@ models = {
         "train_data_size": 3105,
         "train_data_hash": 312607402,
         "eval_data_hash": 3211313,
-        "spacy_base_model": None, # TODO
         "spacy_version": "2.3",
     },
     "mo10": { # biggest model for 'Thematisierungsintensität', merged from several sources
         "path": "../data/models/mo10", #formerly t4__tdc100__s1_articles_tr5__s3_tr10__s4_tr10__s5_tr10__s6_tr10 , where sX means dataset and trX means TransformationRule
-        "text_labels": "TI: Hauptthema, TI: Nebenthema, TI: Verweis",
+        "text_labels": "Thematisierungsintensität: TI: Hauptthema, TI: Nebenthema, TI: Verweis",
         "source": [(gold_data, "g1"), (gold_data, "g5"), (gold_data, "g6"), (gold_data, "g7"), (gold_data, "g8")],
         "trainer_class": Trainer4,
         "gold_data_transform_rule": [TransformRule5, TransformRule10, TransformRule10, TransformRule10, TransformRule10],
@@ -321,7 +320,6 @@ models = {
         "train_data_size": 2803,
         "train_data_hash": 319029941,
         "eval_data_hash": 3211313,
-        "spacy_base_model": None, # TODO
         "spacy_version": "2.3",
     },
     "mo11": {
@@ -351,7 +349,7 @@ models = {
     "mo13": {
         "path": "../data/models/mo13", # im Log steht: ../data/models/t4__tdc100_i45__s1_articles_tr11/
         "text_labels": "Risikotyp", 
-        "source": (gold_data, "g1"), # articles
+        "source": (gold_data, "g1"), # articles # TODO: check if this was really g1
         "trainer_class": Trainer4, 
         "gold_data_transform_rule": TransformRule11, 
         "train_data_cutoff": 100, 
@@ -366,7 +364,7 @@ models = {
     "mo14": {
         "path": "../data/models/mo14", # im Log steht: ../data/models/t4__tdc100_i2__s1_sentences_tr11/
         "text_labels": "Risikotyp", 
-        "source": (gold_data, "g2"), # sentences
+        "source": (gold_data, "g2"), # sentences # TODO: check if this was really g1
         "trainer_class": Trainer4, 
         "gold_data_transform_rule": TransformRule11, 
         "train_data_cutoff": 100, 
@@ -377,7 +375,7 @@ models = {
         "exclusive_classes": False, 
         "spacy_base_model": "de_core_news_sm", 
         "spacy_version": "2.2.4", 
-    }
+    },
 }
 
 model_indices = {
