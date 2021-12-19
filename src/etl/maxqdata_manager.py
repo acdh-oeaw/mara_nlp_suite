@@ -325,12 +325,17 @@ def load_from_amc_and_maxqdata(annotations_xlsx_file_path, articles_xml_director
         root_coding_node = None
         df_coding = xl.parse("Liste der Codes")
         num_cols = df_coding.shape[1]
+        unused_cols_len = None
+        for col_i, col_name in enumerate(df_coding.columns[-1::-1]):
+            if "Unnamed" in col_name:
+                unused_cols_len = col_i + 1
+                break
         parent_of_col_i = {}
 
         for row in df_coding.iterrows():
 
             row_data = row[1]
-            for col_i in range(num_cols - 2):
+            for col_i in range(num_cols - unused_cols_len + 1):
 
                 col_data = row_data[col_i]
 
@@ -554,11 +559,15 @@ def load_from_amc_and_maxqdata(annotations_xlsx_file_path, articles_xml_director
 
                 article_annotated = article_annotated_dict[row_data.Dokumentname]
 
-                corrected_anfang, corrected_ende = article_annotated.correct_anfang_ende(
-                    anfang=row_data.Anfang,
-                    ende=row_data.Ende,
-                    segment_for_check=row_data.Segment
-                )
+                try:
+                    corrected_anfang, corrected_ende = article_annotated.correct_anfang_ende(
+                        anfang=row_data.Anfang,
+                        ende=row_data.Ende,
+                        segment_for_check=row_data.Segment
+                    )
+                except:
+                    corrected_anfang = -1
+                    corrected_ende = -1
 
                 article_annotated.add_coding(
                     coding_anfang=corrected_anfang,
