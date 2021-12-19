@@ -24,12 +24,11 @@ class TransformConfigSM(ConfigRoot):
     gold_data_json_path = data_flow_registry.gold_data["g10"]["path"]
 
 
-
 def run():
 
-    # gdc_sc = main.load_from_maxqdata(TransformConfigSC)
-    # gdc_sc = main.transform_gold_data(TransformConfigSC, gdc_sc)
-    # main.persist_gold_data(TransformConfigSC, gdc_sc)
+    gdc_sc = main.load_from_maxqdata(TransformConfigSC)
+    gdc_sc = main.transform_gold_data(TransformConfigSC, gdc_sc)
+    main.persist_gold_data(TransformConfigSC, gdc_sc)
 
     gdc_sm = main.load_from_maxqdata(TransformConfigSM)
     gdc_sm = main.transform_gold_data(TransformConfigSM, gdc_sm)
