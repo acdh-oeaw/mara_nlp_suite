@@ -383,9 +383,9 @@ models = {
         "trainer_class": Trainer4,
         "gold_data_transform_rule": (TransformRule3, TransformRule13, TransformRule13, TransformRule13, TransformRule13),
         "train_data_cutoff": 100,
-        "train_data_length": None, # TODO final
-        "train_data_hash": None, # TODO final
-        "iteration_limit": 30, # TODO final
+        "train_data_length": "2323 texts",# The gold data contains 2803 texts, but 480 of them had no category assigned, so they were removed
+        "train_data_hash": 310903462,
+        "iteration_limit": 30,
         "dropout": 0.2,
         "exclusive_classes": True,
         "spacy_base_model": "de_core_news_lg",

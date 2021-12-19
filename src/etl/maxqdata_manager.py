@@ -39,7 +39,9 @@ class CodingNode:
         self.children = []
         if article_annotated_set is None:
             self.article_annotated_set = set()
-
+        # SpecialPathCase : BEGIN dirty work-around
+        self.coding_path = None
+        # SpecialPathCase : END
 
     def __str__(self):
 
@@ -59,23 +61,28 @@ class CodingNode:
         return l
 
 
-    def get_hierarchy_path(self):
+    def get_hierarchy_path_as_str(self):
 
         if self.parent is not None:
 
-            parent_path = self.parent.get_hierarchy_path()
-
-            if parent_path != "":
-
-                return parent_path + "\\" + self.coding_value
-
-            else:
-
-                return self.coding_value
+            return self.parent.coding_value + "\\" + self.coding_value
 
         else:
 
-            return ""
+            return self.coding_value
+
+
+    def get_hierarchy_path_as_list(self):
+
+        if self.parent is not None:
+
+            parent_path = self.parent.get_hierarchy_path_as_list()
+
+            return parent_path + [self]
+
+        else:
+
+            return [self]
 
 
 
@@ -250,11 +257,29 @@ class ArticleAnnotated:
 
             raise Exception("Could not find matching coding_node!")
 
-        codings_split = coding_tag.split("\\")
-        matching_coding_node = match_coding(codings_split, self.root_coding_node)
 
-        if codings_split[-1] != matching_coding_node.coding_value:
-            raise Exception("Did not find correct matching coding_node")
+        # SpecialPathCase : dirty work-around (see other comment on this)
+        # uncomment the following lines to revert to the classical parsing
+        #
+        # codings_split = coding_tag.split("\\")
+        # matching_coding_node = match_coding(codings_split, self.root_coding_node)
+        # if codings_split[-1] != matching_coding_node.coding_value:
+        #     raise Exception("Did not find correct matching coding_node")
+        #
+        # SpecialPathCase : BEGIN
+        matching_coding_node = None
+
+        for node in self.root_coding_node.get_all_subnodes():
+
+            if node.coding_path.replace("Codesystem\\", "") == coding_tag:
+
+                matching_coding_node = node
+                node.article_annotated_set.add(self)
+
+        if matching_coding_node is None:
+            raise Exception()
+
+        # SpecialPathCase : END
 
         coding_dict = {
             "coding_anfang": coding_anfang,
@@ -342,6 +367,7 @@ def load_from_amc_and_maxqdata(annotations_xlsx_file_path, articles_xml_director
                 if type(col_data) == str and col_data != " ":
 
                     current_parent = parent_of_col_i.get(col_i, None)
+
                     coding_node = CodingNode(
                         parent=current_parent,
                         coding_value=col_data,
@@ -353,6 +379,46 @@ def load_from_amc_and_maxqdata(annotations_xlsx_file_path, articles_xml_director
                         root_coding_node = coding_node
                     else:
                         current_parent.children.append(coding_node)
+
+                    # SpecialPathCase : BEGIN dirty work-around
+                    # for data of Vertiefungsanalyse, where there are duplicate entries
+                    # These duplicates were either too complex to filter out automatically
+                    # or too time-consuming to do manually. So for that data we assign
+                    # the whole category path as value to transform later with transformation rules
+                    # If this following code gets commented out, the last column data would be used
+                    coding_node.coding_value = coding_node.get_hierarchy_path_as_str()
+                    # SpecialPathCase : END
+
+        # SpecialPathCase : BEGIN dirty work-around
+
+        new_str = None
+        control_set = set()
+
+        for n in root_coding_node.get_all_subnodes():
+
+            n.coding_path = n.coding_value
+
+            search_str = "Codesystem\Codierung Verwantwortlichkeitsreferenzen \\"
+
+            if n.coding_value.startswith(search_str):
+
+                new_str = n.coding_value.replace(search_str, "")
+
+            else:
+
+                new_str = n.coding_value.split("\\")[-1]
+
+            if not new_str in control_set:
+
+                control_set.add(new_str)
+
+            else:
+
+                raise Exception("Duplicate detected!")
+
+            n.coding_value = new_str
+
+        # SpecialPathCase : END
 
         return root_coding_node
 
@@ -673,14 +739,14 @@ def transform_to_gold_data_articles(
 
             article_cats_dict = {}
 
-            relevant_cats = set(
+            assigned_cats = set(
                 coding_dict["coding_node"].coding_value
                 for coding_dict in article_annotated.coding_list
             )
 
             for cat in cats_list:
 
-                if cat in relevant_cats:
+                if cat in assigned_cats:
 
                     article_cats_dict[cat] = 1
 
