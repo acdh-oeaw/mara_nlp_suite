@@ -389,7 +389,7 @@ class TransformRule13(TransformRule):
     ]
 
 
-class TransformRule15(TransformRule):
+class TransformRule14(TransformRule):
     # Rules for Transforming Vertiefungsanalyse zu SC
     # With case handling of 'SpecialPathCase' (the logic leading to these cases can be found by searching for 'SpecialPathCase')
     # There are two kinds of cats: Those with and those without 'Verantwortungsreferenz' leading their value
@@ -835,7 +835,7 @@ class TransformRule15(TransformRule):
     ]
 
 
-class TransformRule16(TransformRule):
+class TransformRule15(TransformRule):
     # Rules for Transforming Vertiefungsanalyse zu SM
     # With case handling of 'SpecialPathCase' (the logic leading to these cases can be found by searching for 'SpecialPathCase')
     # There are two kinds of cats: Those with and those without 'Verantwortungsreferenz' leading their value

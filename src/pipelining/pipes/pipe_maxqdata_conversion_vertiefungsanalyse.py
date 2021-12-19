@@ -11,7 +11,7 @@ class TransformConfigSC(ConfigRoot):
     articles_xml_directory = data_flow_registry.maxqdata_data["md3"]["articles_xml_directory"]
     annotations_xlsx_file_path = data_flow_registry.maxqdata_data["md3"]["annotations_xlsx_file_path"]
     maxqdata_gold_data_transform_function = data_flow_registry.gold_data["g9"]["maxqdata_specific_processing"]
-    gold_data_transform_rule = gold_data_transform_rules.TransformRule15
+    gold_data_transform_rule = gold_data_transform_rules.TransformRule14
     gold_data_json_path = data_flow_registry.gold_data["g9"]["path"]
 
 
@@ -20,7 +20,7 @@ class TransformConfigSM(ConfigRoot):
     articles_xml_directory = data_flow_registry.maxqdata_data["md4"]["articles_xml_directory"]
     annotations_xlsx_file_path = data_flow_registry.maxqdata_data["md4"]["annotations_xlsx_file_path"]
     maxqdata_gold_data_transform_function = data_flow_registry.gold_data["g10"]["maxqdata_specific_processing"]
-    gold_data_transform_rule = gold_data_transform_rules.TransformRule16
+    gold_data_transform_rule = gold_data_transform_rules.TransformRule15
     gold_data_json_path = data_flow_registry.gold_data["g10"]["path"]
 
 
