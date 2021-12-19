@@ -391,6 +391,21 @@ models = {
         "spacy_base_model": "de_core_news_lg",
         "spacy_version": "2.3",
     },
+    "mo16": {
+        "path": "../data/models/mo16",
+        "text_labels": "'V: Zuweisende Partei', 'V: Verantwortungssubjekt', 'V: Modi Verantwortungszuweisung', 'V: Zeitliche Dimension', und alle Subkategorien dazu",
+        "source": (gold_data, "g1"),
+        "trainer_class": Trainer4,
+        "gold_data_transform_rule": (TransformRule16, TransformRule17),
+        "train_data_cutoff": 100,
+        "train_data_length": "1499 texts",# The gold data contains 2803 texts, but 480 of them had no category assigned, so they were removed
+        "train_data_hash": None, # TODO final
+        "iteration_limit": 40,
+        "dropout": 0.2,
+        "exclusive_classes": False,
+        "spacy_base_model": "de_core_news_lg",
+        "spacy_version": "2.3",
+    },
 }
 
 model_indices = {
