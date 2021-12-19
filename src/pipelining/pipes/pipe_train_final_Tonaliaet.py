@@ -15,8 +15,6 @@ class ConfigReadGold(ConfigRoot):
 class ConfigTrain(ConfigRoot):
 
     should_create_model = True
-    # should_create_model = False
-    # should_load_model = True
     should_persist_model = True
     model_def_dict = data_flow_registry.models["mo15"]
     trainer_class = model_def_dict["trainer_class"]
@@ -24,7 +22,6 @@ class ConfigTrain(ConfigRoot):
     train_data_cutoff = model_def_dict["train_data_cutoff"]
     iteration_limit = model_def_dict["iteration_limit"]
     exclusive_classes = model_def_dict["exclusive_classes"]
-    # should_do_dummy_run = True
 
 
 def run():
@@ -72,5 +69,3 @@ def run():
 
     trainer = main.init_trainer(ConfigTrain, cats_list=gdc.cats_list)
     main.run_training(ConfigTrain, trainer, gdc)
-
-    print()
