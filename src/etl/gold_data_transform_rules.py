@@ -348,27 +348,27 @@ class TransformRule11(TransformRule):
     """Risikotypen"""
 
     cat_replacements = [
-        ("Datenschutz, Privatsphäre, Überwachung",                          "RT: Datenschutz, Privatsphäre, Überwachung"), 
-        ("Haftung/Verantwortung",                                           "RT: Haftung/Verantwortung"), 
-        ("Manipulation, Verzerrung, Unwahrh, Filterblas, Polarisieru, Zen", "RT: Manipulation, Verzerrung, Unwahrh, Filterblas, Polarisieru, Zen"), 
-        ("Souv-/Autonomie/Kontrollverlust,Fremdbest.,Überlegenh,Macht/Ein", "RT: Souv-/Autonomie/Kontrollverlust,Fremdbest.,Überlegenh,Macht/Ein"), 
-        ("Intransparenz (Blackbox)",                                        "RT: Intransparenz (Blackbox)"), 
-        ("Kommodifizierung der Nutzer (Ausbeutung)",                        "RT: Kommodifizierung der Nutzer (Ausbeutung)"), 
-        ("Sozialität, Entfremdung vom Natürlichen, Lebenssinn, uncanny ",   "RT: Sozialität, Entfremdung vom Natürlichen, Lebenssinn, uncanny"), 
-        ("Diskriminierung, Ungleichheit",                                   "RT: Diskriminierung, Ungleichheit"), 
-        ("mangelnde Qualität der Automatisierung, Algorithmen, Ki",         "RT: mangelnde Qualität der Automatisierung, Algorithmen, Ki"), 
-        ("Missbrauch d KI, Algorith durch Staat, Unternehm,Interessengrup", "RT: Missbrauch d KI, Algorith durch Staat, Unternehm,Interessengrup"), 
-        ("ethisch, moralisch, philosophische Fragen der KI, Algorithmen",   "RT: ethisch, moralisch, philosophische Fragen der KI, Algorithmen"), 
-        ("Sicherheit (Safety), Unfälle, körperliche/psychische Sicherheit", "RT: Sicherheit (Safety), Unfälle, körperliche/psychische Sicherheit"), 
-        ("IT-/KI-Security (Sicherheit vor Hackern etc)",                    "RT: IT-/KI-Security (Sicherheit vor Hackern etc)"), 
-        ("Ungleichheit bei Sozialabgaben / Steuergerechtigkeit",            "RT: Ungleichheit bei Sozialabgaben / Steuergerechtigkeit"), 
-        ("Fehlallokation von Ressourcen",                                   "RT: Wirtschaftlichkeit und Effizienz"), 
-        ("Mängel bei produktiver Effizienz",                                "RT: Wirtschaftlichkeit und Effizienz"), 
-        ("Investitionsrisiko",                                              "RT: Wirtschaftlichkeit und Effizienz"), 
-        ("mangelnde Adaption/Literacy/Ausbildung/Bildung",                  "RT: mangelnde Adaption/Literacy/Ausbildung/Bildung"), 
-        ("mangelnde Adpation v. Industrie, Wirtschaft, Volkswirtschaft",    "RT: mangelnde Adpation v. Industrie, Wirtschaft, Volkswirtschaft"), 
-        ("Arbeitsplatzverluste / Zukünftige Arbeit",                        "RT: Arbeitsplatzverluste / Zukünftige Arbeit"), 
-        ("Marktmacht, Monopolisierung",                                     "RT: Marktmacht, Monopolisierung")
+        ("Datenschutz, Privatsphäre, Überwachung",                          "R: RT: Datenschutz, Privatsphäre, Überwachung"),
+        ("Haftung/Verantwortung",                                           "R: RT: Haftung/Verantwortung"),
+        ("Manipulation, Verzerrung, Unwahrh, Filterblas, Polarisieru, Zen", "R: RT: Manipulation, Verzerrung, Unwahrh, Filterblas, Polarisieru, Zen"),
+        ("Souv-/Autonomie/Kontrollverlust,Fremdbest.,Überlegenh,Macht/Ein", "R: RT: Souv-/Autonomie/Kontrollverlust,Fremdbest.,Überlegenh,Macht/Ein"),
+        ("Intransparenz (Blackbox)",                                        "R: RT: Intransparenz (Blackbox)"),
+        ("Kommodifizierung der Nutzer (Ausbeutung)",                        "R: RT: Kommodifizierung der Nutzer (Ausbeutung)"),
+        ("Sozialität, Entfremdung vom Natürlichen, Lebenssinn, uncanny ",   "R: RT: Sozialität, Entfremdung vom Natürlichen, Lebenssinn, uncanny"),
+        ("Diskriminierung, Ungleichheit",                                   "R: RT: Diskriminierung, Ungleichheit"),
+        ("mangelnde Qualität der Automatisierung, Algorithmen, Ki",         "R: RT: mangelnde Qualität der Automatisierung, Algorithmen, Ki"),
+        ("Missbrauch d KI, Algorith durch Staat, Unternehm,Interessengrup", "R: RT: Missbrauch d KI, Algorith durch Staat, Unternehm,Interessengrup"),
+        ("ethisch, moralisch, philosophische Fragen der KI, Algorithmen",   "R: RT: ethisch, moralisch, philosophische Fragen der KI, Algorithmen"),
+        ("Sicherheit (Safety), Unfälle, körperliche/psychische Sicherheit", "R: RT: Sicherheit (Safety), Unfälle, körperliche/psychische Sicherheit"),
+        ("IT-/KI-Security (Sicherheit vor Hackern etc)",                    "R: RT: IT-/KI-Security (Sicherheit vor Hackern etc)"),
+        ("Ungleichheit bei Sozialabgaben / Steuergerechtigkeit",            "R: RT: Ungleichheit bei Sozialabgaben / Steuergerechtigkeit"),
+        ("Fehlallokation von Ressourcen",                                   "R: RT: Wirtschaftlichkeit und Effizienz"),
+        ("Mängel bei produktiver Effizienz",                                "R: RT: Wirtschaftlichkeit und Effizienz"),
+        ("Investitionsrisiko",                                              "R: RT: Wirtschaftlichkeit und Effizienz"),
+        ("mangelnde Adaption/Literacy/Ausbildung/Bildung",                  "R: RT: mangelnde Adaption/Literacy/Ausbildung/Bildung"),
+        ("mangelnde Adpation v. Industrie, Wirtschaft, Volkswirtschaft",    "R: RT: mangelnde Adpation v. Industrie, Wirtschaft, Volkswirtschaft"),
+        ("Arbeitsplatzverluste / Zukünftige Arbeit",                        "R: RT: Arbeitsplatzverluste / Zukünftige Arbeit"),
+        ("Marktmacht, Monopolisierung",                                     "R: RT: Marktmacht, Monopolisierung")
     ]
 
 class TransformRule12(TransformRule): 
@@ -1475,4 +1475,30 @@ class TransformRule17(TransformRule):
         (r"V: MVZ_Leugnung/Ablehnung_Selbstzuschreibung", r"V: Modi Verantwortungszuweisung"),
         (r"V: ZD_Prospektive Verantwortung", r"V: Zeitliche Dimension"),
         (r"V: ZD_Retrospektive Verantwortung", r"V: Zeitliche Dimension"),
+    ]
+
+class TransformRule18(TransformRule):
+
+    cat_replacements = [
+        (r"R: RT: Datenschutz, Privatsphäre, Überwachung", r"R: Risikotypen"),
+        (r"R: RT: Haftung/Verantwortung", r"R: Risikotypen"),
+        (r"R: RT: Manipulation, Verzerrung, Unwahrh, Filterblas, Polarisieru, Zen", r"R: Risikotypen"),
+        (r"R: RT: Souv-/Autonomie/Kontrollverlust,Fremdbest.,Überlegenh,Macht/Ein", r"R: Risikotypen"),
+        (r"R: RT: Intransparenz (Blackbox)", r"R: Risikotypen"),
+        (r"R: RT: Kommodifizierung der Nutzer (Ausbeutung)", r"R: Risikotypen"),
+        (r"R: RT: Sozialität, Entfremdung vom Natürlichen, Lebenssinn, uncanny", r"R: Risikotypen"),
+        (r"R: RT: Diskriminierung, Ungleichheit", r"R: Risikotypen"),
+        (r"R: RT: mangelnde Qualität der Automatisierung, Algorithmen, Ki", r"R: Risikotypen"),
+        (r"R: RT: Missbrauch d KI, Algorith durch Staat, Unternehm,Interessengrup", r"R: Risikotypen"),
+        (r"R: RT: ethisch, moralisch, philosophische Fragen der KI, Algorithmen", r"R: Risikotypen"),
+        (r"R: RT: Sicherheit (Safety), Unfälle, körperliche/psychische Sicherheit", r"R: Risikotypen"),
+        (r"R: RT: IT-/KI-Security (Sicherheit vor Hackern etc)", r"R: Risikotypen"),
+        (r"R: RT: Ungleichheit bei Sozialabgaben / Steuergerechtigkeit", r"R: Risikotypen"),
+        (r"R: RT: Wirtschaftlichkeit und Effizienz", r"R: Risikotypen"),
+        (r"R: RT: Wirtschaftlichkeit und Effizienz", r"R: Risikotypen"),
+        (r"R: RT: Wirtschaftlichkeit und Effizienz", r"R: Risikotypen"),
+        (r"R: RT: mangelnde Adaption/Literacy/Ausbildung/Bildung", r"R: Risikotypen"),
+        (r"R: RT: mangelnde Adpation v. Industrie, Wirtschaft, Volkswirtschaft", r"R: Risikotypen"),
+        (r"R: RT: Arbeitsplatzverluste / Zukünftige Arbeit", r"R: Risikotypen"),
+        (r"R: RT: Marktmacht, Monopolisierung", r"R: Risikotypen"),
     ]
