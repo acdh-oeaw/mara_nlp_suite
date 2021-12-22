@@ -1,2 +1,2 @@
-Category;Precision;Recall;F-Score;True Positives;False Positives;True Negatives;False Negatives;Evaluation Positives;Evaluation Negatives;Training Positives;Training Negatives
-AF: Social Companions;0.6679;0.9944;0.7991;177;88;4;1;178;92;980;2125
+Category,Precision,Recall,F-Score,True Positives,False Positives,True Negatives,False Negatives,Evaluation Positives,Evaluation Negatives,Training Positives,Training Negatives
+AF: Social Companions,0.6679,0.9944,0.7991,177,88,4,1,178,92,980,2125

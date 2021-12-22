@@ -1,5 +1,5 @@
-Category;Precision;Recall;F-Score;True Positives;False Positives;True Negatives;False Negatives;Evaluation Positives;Evaluation Negatives;Training Positives;Training Negatives
-T: negativ;0.2319;0.5161;0.32;16;53;90;15;31;143;388;1935
-T: ambivalent;0;0.0;0;0;0;117;57;57;117;175;2148
-T: positiv;0.5397;0.4658;0.5;34;29;72;39;73;101;854;1469
-T: keine Tonalität ggü. KI, Algorithmen, Automatisierung;0.0714;0.2308;0.1091;3;39;122;10;13;161;908;1415
+Category,Precision,Recall,F-Score,True Positives,False Positives,True Negatives,False Negatives,Evaluation Positives,Evaluation Negatives,Training Positives,Training Negatives
+T: negativ,0.2319,0.5161,0.32,16,53,90,15,31,143,388,1935
+T: ambivalent,0,0.0,0,0,0,117,57,57,117,175,2148
+T: positiv,0.5397,0.4658,0.5,34,29,72,39,73,101,854,1469
+"T: keine Tonalität ggü. KI, Algorithmen, Automatisierung",0.0714,0.2308,0.1091,3,39,122,10,13,161,908,1415

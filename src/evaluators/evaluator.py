@@ -201,7 +201,7 @@ def calc_score_table(
 def write_table(table, path):
 
     with open(path, "w") as f:
-        writer = csv.writer(f, delimiter=";")
+        writer = csv.writer(f, delimiter=",")
         writer.writerows(table)
 
 def calc_and_write_all_tables(

@@ -1,22 +1,25 @@
-Category;Precision;Recall;F-Score;True Positives;False Positives;True Negatives;False Negatives;Evaluation Positives;Evaluation Negatives;Training Positives;Training Negatives
-V: Beinhaltet Verantwortungsreferenz;0.7742;0.8571;0.8136;168;49;25;28;196;74;158;1341
-V: ZP: Politik;0;0;0;0;0;249;21;21;249;12;1487
-V: ZP: Wirtschaft;0;0;0;0;0;217;53;53;217;60;1439
-V: ZP: Wissenschaft/Bildung;0;0;0;0;0;218;52;52;218;46;1453
-V: ZP: Gesellschaft/Öffentlichkeit;0;0;0;0;0;223;47;47;223;14;1485
-V: ZP: Individuum/en;0;0;0;0;0;267;3;3;267;4;1495
-V: ZP: Medien/Presse;0;0;0;0;0;153;117;117;153;41;1458
-V: ZP: Kultur;0;0;0;0;0;269;1;1;269;1;1498
-V: VS: Politik;0;0;0;0;0;213;57;57;213;53;1446
-V: VS: Wirtschaft;0.6895;0.7892;0.736;131;59;45;35;166;104;91;1408
-V: VS: Rechtsorgane;0;0;0;0;0;266;4;4;266;4;1495
-V: VS: Wissenschaft/Bildung;0;0;0;0;0;252;18;18;252;19;1480
-V: VS: Gesellschaft/Öffentlichkeit;0;0;0;0;0;226;44;44;226;30;1469
-V: VS: Individuum/en;0;0;0;0;0;247;23;23;247;21;1478
-V: VS: Medien/Presse;0;0;0;0;0;248;22;22;248;4;1495
-V: MVZ: Fremdzuschreibung;0.7401;0.7318;0.736;131;46;45;48;179;91;117;1382
-V: MVZ: Selbstzuschreibung;0;0;0;0;0;186;84;84;186;68;1431
-V: MVZ: Leugnung/Ablehnung_Fremdzuschreibung;0;0;0;0;0;247;23;23;247;15;1484
-V: MVZ: Leugnung/Ablehnung_Selbstzuschreibung;0;0;0;0;0;259;11;11;259;2;1497
-V: ZD: Prospektive Verantwortung;0.8125;0.7409;0.7751;143;33;44;50;193;77;109;1390
-V: ZD: Retrospektive Verantwortung;0;0;0;0;0;202;68;68;202;86;1413
+Category,Precision,Recall,F-Score,True Positives,False Positives,True Negatives,False Negatives,Evaluation Positives,Evaluation Negatives,Training Positives,Training Negatives
+V: Zuweisende Partei,0.7742,0.8571,0.8136,168,49,25,28,196,74,158,1341
+V: Verantwortungssubjekt,0.7961,0.8367,0.8159,164,42,32,32,196,74,158,1341
+V: Modi Verantwortungszuweisung,0.7783,0.8462,0.8108,165,47,28,30,195,75,158,1341
+V: Zeitliche Dimension,0.7941,0.8265,0.81,162,42,32,34,196,74,158,1341
+V: ZP_Politik,0,0.0,0,0,0,249,21,21,249,12,1487
+V: ZP_Wirtschaft,0,0.0,0,0,0,217,53,53,217,60,1439
+V: ZP_Wissenschaft/Bildung,0,0.0,0,0,0,218,52,52,218,46,1453
+V: ZP_Gesellschaft/Öffentlichkeit,0,0.0,0,0,0,223,47,47,223,14,1485
+V: ZP_Individuum/en,0,0.0,0,0,0,267,3,3,267,4,1495
+V: ZP_Medien/Presse,0,0.0,0,0,0,153,117,117,153,41,1458
+V: ZP_Kultur,0,0.0,0,0,0,269,1,1,269,1,1498
+V: VS_Politik,0,0.0,0,0,0,213,57,57,213,53,1446
+V: VS_Wirtschaft,0.6895,0.7892,0.736,131,59,45,35,166,104,91,1408
+V: VS_Rechtsorgane,0,0.0,0,0,0,266,4,4,266,4,1495
+V: VS_Wissenschaft/Bildung,0,0.0,0,0,0,252,18,18,252,19,1480
+V: VS_Gesellschaft/Öffentlichkeit,0,0.0,0,0,0,226,44,44,226,30,1469
+V: VS_Individuum/en,0,0.0,0,0,0,247,23,23,247,21,1478
+V: VS_Medien/Presse,0,0.0,0,0,0,248,22,22,248,4,1495
+V: MVZ_Fremdzuschreibung,0.7401,0.7318,0.736,131,46,45,48,179,91,117,1382
+V: MVZ_Selbstzuschreibung,0,0.0,0,0,0,186,84,84,186,68,1431
+V: MVZ_Leugnung/Ablehnung_Fremdzuschreibung,0,0.0,0,0,0,247,23,23,247,15,1484
+V: MVZ_Leugnung/Ablehnung_Selbstzuschreibung,0,0.0,0,0,0,259,11,11,259,2,1497
+V: ZD_Prospektive Verantwortung,0.8125,0.7409,0.7751,143,33,44,50,193,77,109,1390
+V: ZD_Retrospektive Verantwortung,0,0.0,0,0,0,202,68,68,202,86,1413
