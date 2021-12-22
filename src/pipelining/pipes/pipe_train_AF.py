@@ -52,7 +52,7 @@ class ConfigTrain(ConfigRoot):
     exclusive_classes = model_def_dict["exclusive_classes"]
 
 
-def run():
+def load_and_transform_data():
 
     gdc_1 = main.load_gold_data(Config1_1)
     gdc_1 = main.transform_gold_data(Config1_1, gdc_1)
@@ -79,6 +79,12 @@ def run():
     gdc_6 = main.load_gold_data(Config6)
     gdc_6 = main.transform_gold_data(Config6, gdc_6)
     gdc = gold_data_manager.merge_assuming_identical_categories(gdc, gdc_6)
+
+    return gdc
+
+def run():
+
+    gdc = load_and_transform_data()
 
     trainer = main.init_trainer(ConfigTrain, cats_list=gdc.cats_list)
     main.run_training(config=ConfigTrain, trainer=trainer, gold_data_container=gdc)

@@ -24,7 +24,7 @@ class ConfigTrain(ConfigRoot):
     exclusive_classes = model_def_dict["exclusive_classes"]
 
 
-def run():
+def load_and_transform_data():
 
     ConfigReadGold.gold_data_json_path = data_flow_registry.gold_data["g1"]["path"]
     ConfigReadGold.gold_data_transform_rule = gold_data_transform_rules.TransformRule3
@@ -54,18 +54,13 @@ def run():
     gdc = gold_data_manager.merge_assuming_identical_categories(gdc, gdc_7)
     gdc = gold_data_manager.merge_assuming_identical_categories(gdc, gdc_8)
 
-    # There are texts without Tonalität assigned, find and remove them:
-    indices_to_remove = []
-    for i, gdi in enumerate(gdc.gold_data_item_list):
-        found = False
-        for val in gdi.cats.values():
-            if val == 1:
-                found = True
-        if not found:
-            indices_to_remove.append(i)
-    for i in indices_to_remove[-1::-1]:
-        del gdc.gold_data_item_list[i]
+    gdc = gdc.remove_cats_without_assignments()
 
+    return gdc
+
+def run():
+
+    gdc = load_and_transform_data()
 
     trainer = main.init_trainer(ConfigTrain, cats_list=gdc.cats_list)
     main.run_training(ConfigTrain, trainer, gdc)

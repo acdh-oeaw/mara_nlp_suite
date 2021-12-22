@@ -9,8 +9,8 @@ prodigy_data = None
 gold_data = None
 models = None
 model_indices = None
-lmvr = None
 evaluations = None
+lmvr = None
 
 
 amc_corpora = {
@@ -28,38 +28,38 @@ amc_corpora = {
 
 maxqdata_data = {
     "md1": {
+        "description": "First batch",
         "articles_xml_directory": "../data/maxqdata_data/amc_subcorpus/2020-02-21/nlp_import/",
         "annotations_xlsx_file_path": "../data/maxqdata_data/annotations_maxqdata/2020-04-04/MARA_Full sample _1250320_V1.mx18.xlsx",
         "text_labels": "181 labels (with redundancies due to technical limitations in maxqdata)",
         "source": (amc_corpora, "mara002_1500"),
         "size": "1499 articles, 13282 annotations.",
-        "description": "First batch"
     },
     "md2": { # Probecodierung mit 50 Texten # TODO
     },
     "md3": {
+        "description": "Vertiefungsanalyse SC: Social Companions",
         "articles_xml_directory": "../data/maxqdata_data/amc_subcorpus/2020-12-17_Vertiefungsanalyse/101_derived/mara_SocialCompanions/",
         "annotations_xlsx_file_path": "../data/maxqdata_data/annotations_maxqdata/2021-05-27_Vertiefungsanalyse/Codierung_SC_Final.xlsx",
         "source": (models, ""), # TODO which models / indices were used?
         "source_selection_logic": "'AF: Social Companions' between 0.99983 and 0.505869, 'TI: Hauptthema' between 1.00000 and 0.562652, LMVR-logic", # see redmine ticket #18496
         "size": "270 articles",
-        "description": "Vertiefungsanalyse SC: Social Companions"
     },
     "md4": {
+        "description": "Vertiefungsanalyse SM: Social Media",
         "articles_xml_directory": "../data/maxqdata_data/amc_subcorpus/2020-12-17_Vertiefungsanalyse/101_derived/mara_SozialeMedien/",
         "annotations_xlsx_file_path": "../data/maxqdata_data/annotations_maxqdata/2021-05-27_Vertiefungsanalyse/Codierung_SM_Final.xlsx",
         "source": (models, ""), # TODO which models / indices were used?
         "source_selection_logic": "'AF: Soziale Medien' between 0.999896 and 0.72494, 'TI: Hauptthema' between 1.000000 and 0.515524, LMVR-logic", # see redmine ticket #18496
         "size": "270 articles",
-        "description": "Vertiefungsanalyse SM: Social Media"
     },
     "md5": {
+        "description": "Vertiefungsanalyse SM+SC: Social Media and Social Companions",
         "articles_xml_directory": "../data/maxqdata_data/amc_subcorpus/2020-12-17_Vertiefungsanalyse/101_derived/mara_SozialeMedien_SocialCompanions/",
         "annotations_xlsx_file_path": None,
         "source": (models, ""), # TODO which models / indices were used?
         "source_selection_logic": "'AF: Soziale Medien' and 'AF: Social Companions' above 0.9, 'TI: Hauptthema' between 1.0 and 0.991806, LMVR-logic", # see redmine ticket #18496
         "size": "10 articles",
-        "description": "Vertiefungsanalyse SM+SC: Social Media and Social Companions"
     }
 }
 
@@ -176,6 +176,7 @@ gold_data = {
         "size": "270 articles",
     },
 }
+
 
 models = {
     "mo1": {
@@ -294,7 +295,8 @@ models = {
         "spacy_base_model": "de_core_news_sm",
         "spacy_version": "2.2.4",
     },
-    "mo9": { # biggest model for 'Anwendungsfelder', merged from several sources
+    "mo9": {
+        "description": "biggest model for 'Anwendungsfelder', merged from several sources",
         "path": "../data/models/mo9", # formerly t4__tdc100__s1_articles_tr2_1_tr8__s2_tr9__s3_tr8__s4_tr8__s5_tr8__s6_tr8 , where sX means dataset and trX means TransformationRule
         "text_labels": "Anwendungsfelder: 'AF: Social Companions', 'AF: Soziale Medien'",
         "source": [(gold_data, "g1"), (gold_data, "g4"), (gold_data, "g5"), (gold_data, "g6"), (gold_data, "g7"), (gold_data, "g8")],
@@ -308,7 +310,8 @@ models = {
         "eval_data_hash": 3211313,
         "spacy_version": "2.3",
     },
-    "mo10": { # biggest model for 'Thematisierungsintensität', merged from several sources
+    "mo10": {
+        "description": "biggest model for 'Thematisierungsintensität', merged from several sources",
         "path": "../data/models/mo10", #formerly t4__tdc100__s1_articles_tr5__s3_tr10__s4_tr10__s5_tr10__s6_tr10 , where sX means dataset and trX means TransformationRule
         "text_labels": "Thematisierungsintensität: TI: Hauptthema, TI: Nebenthema, TI: Verweis",
         "source": [(gold_data, "g1"), (gold_data, "g5"), (gold_data, "g6"), (gold_data, "g7"), (gold_data, "g8")],
@@ -323,6 +326,7 @@ models = {
         "spacy_version": "2.3",
     },
     "mo11": {
+        "description": "Verantwortung allgemein",
         "path": "../data/models/mo11",
         "text_labels": "Verantwortungsreferenz",
         "source": (gold_data, "g1"),
@@ -335,6 +339,7 @@ models = {
         "spacy_version": "2.3",
     },
     "mo12": {
+        "description": "Verantwortung allgemein, zur schnellen Evaluierung mit tdc von 80",
         "path": "../data/models/mo12",
         "text_labels": "Verantwortungsreferenz",
         "source": (gold_data, "g1"),
@@ -347,7 +352,8 @@ models = {
         "spacy_version": "2.3",
     },
     "mo13": {
-        "path": "../data/models/mo13", # im Log steht: ../data/models/t4__tdc100_i45__s1_articles_tr11/
+        "description": "Risiko, auf Text-Ebene",
+        "path": "../data/models/mo13", # formerly: ../data/models/t4__tdc100_i45__s1_articles_tr11/
         "text_labels": "Risikotyp", 
         "source": (gold_data, "g1"), # articles # TODO: check if this was really g1
         "trainer_class": Trainer4, 
@@ -362,7 +368,8 @@ models = {
         "spacy_version": "2.2.4", 
     }, 
     "mo14": {
-        "path": "../data/models/mo14", # im Log steht: ../data/models/t4__tdc100_i2__s1_sentences_tr11/
+        "description": "Risiko, auf Satz-Ebene",
+        "path": "../data/models/mo14", # formerly: ../data/models/t4__tdc100_i2__s1_sentences_tr11/
         "text_labels": "Risikotyp", 
         "source": (gold_data, "g2"), # sentences # TODO: check if this was really g1
         "trainer_class": Trainer4, 
@@ -377,6 +384,7 @@ models = {
         "spacy_version": "2.2.4", 
     },
     "mo15": {
+        "description": "Tonalität",
         "path": "../data/models/mo15",
         "text_labels": "Tonalität: 'T: negativ', 'T: ambivalent', 'T: positiv', 'T: keine Tonalität ggü. KI, Algorithmen, Automatisierung'",
         "source": (gold_data, "g1", "g5", "g6", "g7", "g8"),
@@ -392,6 +400,7 @@ models = {
         "spacy_version": "2.3",
     },
     "mo16": {
+        "description": "Verantwortung",
         "path": "../data/models/mo16",
         "text_labels": "'V: Zuweisende Partei', 'V: Verantwortungssubjekt', 'V: Modi Verantwortungszuweisung', 'V: Zeitliche Dimension', und alle Subkategorien dazu",
         "source": (gold_data, "g1"),
@@ -407,6 +416,7 @@ models = {
         "spacy_version": "2.3",
     },
     "mo17": {
+        "description": "Risiko",
         "path": "../data/models/mo17",
         "text_labels": "'R: Risikotypen', und alle 19 Subkategorien dazu",
         "source": (gold_data, "g1"),
@@ -422,7 +432,6 @@ models = {
         "spacy_version": "2.3",
     },
 }
-
 model_indices = {
     # All of the following indices were done on corpus "amc_corpora['mara002']" with a nlp model
     "i1": {
@@ -463,11 +472,109 @@ model_indices = {
     },
 }
 
-lmvr = {
-    # TODO
+evaluations_scores = {
+    "es1": {
+        "description": "Tonalität, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Companions",
+        "path": "../data/evaluation_data/evaluations_final/es1.csv",
+        "model": (models, "mo15"),
+        "eval_data": (gold_data, "g9"),
+    },
+    "es2": {
+        "description": "Tonalität, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Media",
+        "path": "../data/evaluation_data/evaluations_final/es2.csv",
+        "model": (models, "mo15"),
+        "eval_data": (gold_data, "g10"),
+    },
+    "es3": {
+        "description": "Verantwortung, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Companions",
+        "path": "../data/evaluation_data/evaluations_final/es3.csv",
+        "model": (models, "mo16"),
+        "eval_data": (gold_data, "g9"),
+    },
+    "es4": {
+        "description": "Verantwortung, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Media",
+        "path": "../data/evaluation_data/evaluations_final/es4.csv",
+        "model": (models, "mo16"),
+        "eval_data": (gold_data, "g10"),
+    },
+    "es5": {
+        "description": "Risiko, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Companions",
+        "path": "../data/evaluation_data/evaluations_final/es5.csv",
+        "model": (models, "mo17"),
+        "eval_data": (gold_data, "g9"),
+    },
+    "es6": {
+        "description": "Risiko, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Media",
+        "path": "../data/evaluation_data/evaluations_final/es6.csv",
+        "model": (models, "mo17"),
+        "eval_data": (gold_data, "g10"),
+    },
+    "es7": {
+        "description": "Anwendungsfeld Social Companions, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Companions",
+        "path": "../data/evaluation_data/evaluations_final/es7.csv",
+        "model": (models, "mo9"),
+        "eval_data": (gold_data, "g9"),
+    },
+    "es8": {
+        "description": "Anwendungsfeld Social Media, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Media",
+        "path": "../data/evaluation_data/evaluations_final/es8.csv",
+        "model": (models, "mo9"),
+        "eval_data": (gold_data, "g10"),
+    },
 }
 
-evaluations = {
+evaluation_diffs = {
+    "ed1": {
+        "description": "Tonalität, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Companions",
+        "path": "../data/evaluation_data/evaluations_final/ed1.csv",
+        "model": (models, "mo15"),
+        "eval_data": (gold_data, "g9"),
+    },
+    "ed2": {
+        "description": "Tonamo16lität, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Media",
+        "path": "../data/evaluation_data/evaluations_final/ed2.csv",
+        "model": (models, "mo15"),
+        "eval_data": (gold_data, "g10"),
+    },
+    "ed3": {
+        "description": "Verantwortung, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Companions",
+        "path": "../data/evaluation_data/evaluations_final/ed3.csv",
+        "model": (models, "mo16"),
+        "eval_data": (gold_data, "g9"),
+    },
+    "ed4": {
+        "description": "Verantwortung, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Media",
+        "path": "../data/evaluation_data/evaluations_final/ed4.csv",
+        "model": (models, "mo16"),
+        "eval_data": (gold_data, "g10"),
+    },
+    "ed5": {
+        "description": "Risiko, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Companions",
+        "path": "../data/evaluation_data/evaluations_final/ed5.csv",
+        "model": (models, "mo17"),
+        "eval_data": (gold_data, "g9"),
+    },
+    "ed6": {
+        "description": "Risiko, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Media",
+        "path": "../data/evaluation_data/evaluations_final/ed6.csv",
+        "model": (models, "mo17"),
+        "eval_data": (gold_data, "g10"),
+    },
+    "ed7": {
+        "description": "Anwendungsfeld Social Companions, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Companions",
+        "path": "../data/evaluation_data/evaluations_final/ed7.csv",
+        "model": (models, "mo9"),
+        "eval_data": (gold_data, "g9"),
+    },
+    "ed8": {
+        "description": "Anwendungsfeld Social Media, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Media",
+        "path": "../data/evaluation_data/evaluations_final/ed8.csv",
+        "model": (models, "mo9"),
+        "eval_data": (gold_data, "g10"),
+    },
+}
+
+lmvr = {
     # TODO
 }
 

@@ -185,6 +185,15 @@ class ConfigRoot:
     # Launches an ipython shell after executing other functions. (In an IDE like pycharm it might be better to use the IDE's console however)
     should_run_in_shell = None
 
+    # -------------------------------------------------------
+    # Evaluation configs
+
+    #
+    evaluation_scores_path = None
+
+    #
+    evaluation_diffs_path = None
+
     should_run_evaluation = None
     evaluation_tasks = None
     # evaluation_tasks = [

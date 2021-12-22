@@ -792,7 +792,7 @@ class TransformRule14(TransformRule):
         (r"Verantwortungsreferenz 7\Zeit und Qualität der Verantwortungszuweisung 7\Prospektiv positiv 7", r"Verantwortungsreferenz\Zeit und Qualität der Verantwortungszuweisung\Prospektiv positiv"),
         (r"Verantwortungsreferenz 7\Zeit und Qualität der Verantwortungszuweisung 7\Prospektiv negativ 7", r"Verantwortungsreferenz\Zeit und Qualität der Verantwortungszuweisung\Prospektiv negativ"),
         (r"Verantwortungsreferenz 8\Zuweisende Partei/Sprecher*in 8\Künstler*innen 8", r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Künstler*innen"),
-        (r"Verantwortungsreferenz 8\Zuweisende Partei/Sprecher*in 8\Mitglieder von Ethikräten & Philosoph*innen  8 ", r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Mitglieder von Ethikräten & Philosoph*innen  "),
+        (r"Verantwortungsreferenz 8\Zuweisende Partei/Sprecher*in 8\Mitglieder von Ethikräten & Philosoph*innen  8 ", r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Mitglieder von Ethikräten & Philosoph*innen"),
         (r"Verantwortungsreferenz 8\Zuweisende Partei/Sprecher*in 8\Forschungseinrichtungen und Wissenschaftler*innen 8", r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Forschungseinrichtungen und Wissenschaftler*innen"),
         (r"Verantwortungsreferenz 8\Relata der Verantwortung 8\Subjekt 8\Hersteller*innen und Verkäufer*innen von Social Robotics 8", r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Hersteller*innen und Verkäufer*innen von Social Robotics"),
         (r"Verantwortungsreferenz 8\Relata der Verantwortung 8\Subjekt 8\Politische Entscheidungsträger*innen 8", r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Politische Entscheidungsträger*innen"),
@@ -1358,7 +1358,8 @@ class TransformRule15(TransformRule):
     ]
 
 
-class TransformRule16(TransformRule):
+class TransformRule16(TransformRule): # TODO final Replace 'ZP_' with 'ZP: '
+    # Used on 'MARA_Full sample _1250320_V1.mx18.xlsx'
 
     # The following cat_replacements list was made manually for each category with this script:
     # str_old = "Leugnung/Ablehnung_Selbstzuschreibung_"
@@ -1460,6 +1461,7 @@ class TransformRule16(TransformRule):
     ]
 
 class TransformRule17(TransformRule):
+    # Used on 'MARA_Full sample _1250320_V1.mx18.xlsx' after application of TransformRule16
 
     cat_replacements = [
         (r"V: ZP_Politik", r"V: Zuweisende Partei"),
@@ -1508,4 +1510,140 @@ class TransformRule18(TransformRule):
         (r"R: RT: mangelnde Adpation v. Industrie, Wirtschaft, Volkswirtschaft", r"R: Risikotypen"),
         (r"R: RT: Arbeitsplatzverluste / Zukünftige Arbeit", r"R: Risikotypen"),
         (r"R: RT: Marktmacht, Monopolisierung", r"R: Risikotypen"),
+    ]
+
+class TransformRule19(TransformRule): # TODO final: Change all target cats to 'V: beinhaltet Verantwortungsreferenz'
+
+    cat_replacements = [
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Politische Entscheidungsträger*innen", r"V: ZP_Politik"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Kommerzielle/Öffentliche Unternehmen/Einrichtungen", r"V: ZP_Wirtschaft"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Hersteller*innen und Verkäufer*innen von Social Robotics", r"V: ZP_Wirtschaft"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Bildungseinrichtungen & Lehrkräfte", r"V: ZP_Wissenschaft/Bildung"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Forschungseinrichtungen und Wissenschaftler*innen", r"V: ZP_Wissenschaft/Bildung"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Mitglieder von Ethikräten & Philosoph*innen", r"V: ZP_Wissenschaft/Bildung"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Gesellschaft/Bürger*innen", r"V: ZP_Gesellschaft/Öffentlichkeit"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Gesellschaftliche Interessenvertretungen", r"V: ZP_Gesellschaft/Öffentlichkeit"),
+        # (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Rechtliche Entscheidungsträger*innen", r""), # In training data there could be a category 'ZP_Rechtsorgane' but it was never assigned and hence never got integrated into training. No need then to use it in evaluation
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Einrichtungen und Subjekte im Gesundheitsbereich", r"V: ZP_Gesellschaft/Öffentlichkeit"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Private User*innen", r"V: ZP_Individuum/en"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Presseorgane & Journalist*innen", r"V: ZP_Medien/Presse"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Künstler*innen", r"V: ZP_Kultur"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Politische Entscheidungsträger*innen", r"V: VS_Politik"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Kommerzielle/Öffentliche Unternehmen/Einrichtungen", r"V: VS_Wirtschaft"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Hersteller*innen und Verkäufer*innen von Social Robotics", r"V: VS_Wirtschaft"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Rechtliche Entscheidungsträger*innen", r"V: VS_Rechtsorgane"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Bildungseinrichtungen & Lehrkräfte", r"V: VS_Wissenschaft/Bildung"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Öffentliche Institutionen (in Kultur, Bildung etc.)", r"V: VS_Wissenschaft/Bildung"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Forschungseinrichtungen und Wissenschaftler*innen", r"V: VS_Wissenschaft/Bildung"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Mitglieder von Ethikräten & Philosoph*innen", r"V: VS_Wissenschaft/Bildung"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Der Mensch/die Menschheit/die Menschen", r"V: VS_Gesellschaft/Öffentlichkeit"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Gesellschaft/Bürger*innen", r"V: VS_Gesellschaft/Öffentlichkeit"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Einrichtungen und Subjekte im Gesundheitsbereich", r"V: VS_Gesellschaft/Öffentlichkeit"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Private User*innen", r"V: VS_Individuum/en"),
+        # (r"Verantwortungsreferenz\\Relata der Verantwortung\\Subjekt\\Künstler*innen", r""), # In training data there could be a category 'VS_Kultur' but it was never assigned and hence never got integrated into training. No need then to use it in evaluation
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Presseorgane/Journalist*innen/Medien", r"V: VS_Medien/Presse"),
+        (r"Verantwortungsreferenz\Modi der Verantwortungszuweisung\Fremdzuschreibung", r"V: MVZ_Fremdzuschreibung"),
+        (r"Verantwortungsreferenz\Modi der Verantwortungszuweisung\Selbstzuschreibung", r"V: MVZ_Selbstzuschreibung"),
+        (r"Verantwortungsreferenz\Modi der Verantwortungszuweisung\Leugnung/Ablehnung_Fremdzuschreibung", r"V: MVZ_Leugnung/Ablehnung_Fremdzuschreibung"),
+        (r"Verantwortungsreferenz\Modi der Verantwortungszuweisung\Leugnung/Ablehnung_Selbstzuschreibung", r"V: MVZ_Leugnung/Ablehnung_Selbstzuschreibung"),
+        (r"Verantwortungsreferenz\Zeit und Qualität der Verantwortungszuweisung\Prospektiv negativ", r"V: ZD_Prospektive Verantwortung"),
+        (r"Verantwortungsreferenz\Zeit und Qualität der Verantwortungszuweisung\Prospektiv nicht explizit negativ/positiv", r"V: ZD_Prospektive Verantwortung"),
+        (r"Verantwortungsreferenz\Zeit und Qualität der Verantwortungszuweisung\Prospektiv positiv", r"V: ZD_Prospektive Verantwortung"),
+        (r"Verantwortungsreferenz\Zeit und Qualität der Verantwortungszuweisung\Retrospektiv negativ", r"V: ZD_Retrospektive Verantwortung"),
+        (r"Verantwortungsreferenz\Zeit und Qualität der Verantwortungszuweisung\Retrospektiv nicht explitzit negativ/positiv", r"V: ZD_Retrospektive Verantwortung"),
+        (r"Verantwortungsreferenz\Zeit und Qualität der Verantwortungszuweisung\Retrospektiv positiv", r"V: ZD_Retrospektive Verantwortung"),
+    ]
+
+class TransformRule20(TransformRule): # TODO final: Change all target cats to 'V: beinhaltet Verantwortungsreferenz'
+
+    cat_replacements = [
+        (r"V: ZP_Politik", r"V: Zuweisende Partei"),
+        (r"V: ZP_Wirtschaft", r"V: Zuweisende Partei"),
+        (r"V: ZP_Wissenschaft/Bildung", r"V: Zuweisende Partei"),
+        (r"V: ZP_Gesellschaft/Öffentlichkeit", r"V: Zuweisende Partei"),
+        (r"V: ZP_Individuum/en", r"V: Zuweisende Partei"),
+        (r"V: ZP_Medien/Presse", r"V: Zuweisende Partei"),
+        (r"V: ZP_Kultur", r"V: Zuweisende Partei"),
+        (r"V: VS_Politik", r"V: Verantwortungssubjekt"),
+        (r"V: VS_Wirtschaft", r"V: Verantwortungssubjekt"),
+        (r"V: VS_Rechtsorgane", r"V: Verantwortungssubjekt"),
+        (r"V: VS_Wissenschaft/Bildung", r"V: Verantwortungssubjekt"),
+        (r"V: VS_Gesellschaft/Öffentlichkeit", r"V: Verantwortungssubjekt"),
+        (r"V: VS_Individuum/en", r"V: Verantwortungssubjekt"),
+        (r"V: VS_Medien/Presse", r"V: Verantwortungssubjekt"),
+        (r"V: MVZ_Fremdzuschreibung", r"V: Modi Verantwortungszuweisung"),
+        (r"V: MVZ_Selbstzuschreibung", r"V: Modi Verantwortungszuweisung"),
+        (r"V: MVZ_Leugnung/Ablehnung_Fremdzuschreibung", r"V: Modi Verantwortungszuweisung"),
+        (r"V: V: MVZ_Leugnung/Ablehnung_Selbstzuschreibung", r"V: Modi Verantwortungszuweisung"),
+        (r"V: ZD_Prospektive Verantwortung", r"V: Zeitliche Dimension"),
+        (r"V: ZD_Retrospektive Verantwortung", r"V: Zeitliche Dimension"),
+    ]
+
+class TransformRule21(TransformRule):
+
+    cat_replacements = [
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Politische Entscheidungsträger*innen", r"V: ZP_Politik"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Unternehmen/Anwender/ Profiteure/Dienstleistungsnutzer*innen", r"V: ZP_Wirtschaft"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Internetplattformen & Social Media-Anbieter*innen", r"V: ZP_Wirtschaft"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Bildungseinrichtungen & Lehrkräfte", r"V: ZP_Wissenschaft/Bildung"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Forschungseinrichtungen und Wissenschaftler*innen", r"V: ZP_Wissenschaft/Bildung"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Mitglieder von Ethikräten & Philosoph*innen", r"V: ZP_Wissenschaft/Bildung"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Gesellschaft/Bürger*innen", r"V: ZP_Gesellschaft/Öffentlichkeit"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Gesellschaftliche Interessenvertretungen", r"V: ZP_Gesellschaft/Öffentlichkeit"),
+        #(r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Rechtliche Entscheidungsträger*innen", r""), # In training data there could be a category 'ZP_Rechtsorgane' but it was never assigned and hence never got integrated into training. No need then to use it in evaluation
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Private User*innen", r"V: ZP_Individuum/en"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Presseorgane & Journalist*innen", r"V: ZP_Medien/Presse"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Künstler*innen", r"V: ZP_Kultur"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Softwareentwickler*innen & Programmierer*innen", r"V: ZP_Wirtschaft"),
+        (r"Verantwortungsreferenz\Zuweisende Partei/Sprecher*in\Datenanalyst*innen", r"V: ZP_Wirtschaft"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Politische Entscheidungsträger*innen", r"V: VS_Politik"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Unternehmen/Anwender/ Profiteure/Dienstleistungsnutzer*innen", r"V: VS_Wirtschaft"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Internetplattformen & Social Media-Anbieter*innen", r"V: VS_Wirtschaft"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Rechtliche Entscheidungsträger*innen", r"V: VS_Rechtsorgane"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Bildungseinrichtungen & Lehrkräfte", r"V: VS_Wissenschaft/Bildung"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Forschungseinrichtungen und Wissenschaftler*innen", r"V: VS_Wissenschaft/Bildung"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Mitglieder von Ethikräten & Philosoph*innen", r"V: VS_Wissenschaft/Bildung"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Gesellschaft/Bürger*innen", r"V: VS_Gesellschaft/Öffentlichkeit"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Private User*innen", r"V: VS_Individuum/en"),
+        # (r"Verantwortungsreferenz\\Relata der Verantwortung\\Subjekt\\Künstler*innen", r""), # In training data there could be a category 'VS_Kultur' but it was never assigned and hence never got integrated into training. No need then to use it in evaluation
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Presseorgane & Journalist*innen", r"V: VS_Medien/Presse"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Softwareentwickler*innen & Programmierer*innen", r"V: VS_Wirtschaft"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Datenanalyst*innen", r"V: VS_Wirtschaft"),
+        (r"Verantwortungsreferenz\Relata der Verantwortung\Subjekt\Technologien wird indirekt selbst Verantwortung zugewiesen", r"V: VS_Wirtschaft"),
+        (r"Verantwortungsreferenz\Modi der Verantwortungszuweisung\Fremdzuschreibung", r"V: MVZ_Fremdzuschreibung"),
+        (r"Verantwortungsreferenz\Modi der Verantwortungszuweisung\Selbstzuschreibung", r"V: MVZ_Selbstzuschreibung"),
+        (r"Verantwortungsreferenz\Modi der Verantwortungszuweisung\Leugnung/Ablehnung_Fremdzuschreibung", r"V: MVZ_Leugnung/Ablehnung_Fremdzuschreibung"),
+        (r"Verantwortungsreferenz\Modi der Verantwortungszuweisung\Leugnung/Ablehnung_Selbstzuschreibung", r"V: MVZ_Leugnung/Ablehnung_Selbstzuschreibung"),
+        (r"Verantwortungsreferenz\Zeit und Qualität der Verantwortungszuweisung\Prospektiv negativ", r"V: ZD_Prospektive Verantwortung"),
+        (r"Verantwortungsreferenz\Zeit und Qualität der Verantwortungszuweisung\Prospektiv nicht explizit negativ/positiv", r"V: ZD_Prospektive Verantwortung"),
+        (r"Verantwortungsreferenz\Zeit und Qualität der Verantwortungszuweisung\Prospektiv positiv", r"V: ZD_Prospektive Verantwortung"),
+        (r"Verantwortungsreferenz\Zeit und Qualität der Verantwortungszuweisung\Retrospektiv negativ", r"V: ZD_Retrospektive Verantwortung"),
+        (r"Verantwortungsreferenz\Zeit und Qualität der Verantwortungszuweisung\Retrospektiv nicht explitzit negativ/positiv", r"V: ZD_Retrospektive Verantwortung"),
+        (r"Verantwortungsreferenz\Zeit und Qualität der Verantwortungszuweisung\Retrospektiv positiv", r"V: ZD_Retrospektive Verantwortung"),
+    ]
+
+class TransformRule22(TransformRule):
+
+    cat_replacements = [
+        ("AF: Social Companions", "AF: Social Companions")
+    ]
+
+class TransformRule23(TransformRule):
+
+    cat_replacements = [
+        ("SC nicht Thema", "AF: NOT Social Companions"),
+        ("SC Nebenthema", "AF: NOT Social Companions"),
+    ]
+
+class TransformRule24(TransformRule):
+
+    cat_replacements = [
+        ("AF: Soziale Medien", "AF: Soziale Medien")
+    ]
+
+class TransformRule25(TransformRule):
+
+    cat_replacements = [
+        ("SM oder algorithmen, automatisierung, etc.  nicht Thema", "AF: NOT Soziale Medien"),
+        ("SM oder algorithmen, etc. nur Nebenthema", "AF: NOT Soziale Medien"),
     ]

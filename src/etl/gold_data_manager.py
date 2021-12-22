@@ -62,6 +62,22 @@ class GoldDataContainer:
 
         return gdc_copy
 
+    def remove_cats_without_assignments(self):
+
+        indices_to_remove = []
+        for i, gdi in enumerate(self.gold_data_item_list):
+            found = False
+            for val in gdi.cats.values():
+                if val == 1:
+                    found = True
+            if not found:
+                indices_to_remove.append(i)
+        for i in indices_to_remove[-1::-1]:
+            del self.gold_data_item_list[i]
+
+        return self
+    
+
 
 def export_to_dict(gold_data_container: GoldDataContainer) -> Dict:
 
@@ -238,3 +254,60 @@ def merge_assuming_identical_categories(gdc1: GoldDataContainer, gdc2: GoldDataC
     gdc.gold_data_item_list = gdc1.gold_data_item_list + gdc2.gold_data_item_list
 
     return gdc
+
+
+def extend_with_additional_cats(gdc_1, gdc_2):
+    
+    gdc_merged = GoldDataContainer()
+    gdc_merged.cats_list = gdc_1.cats_list + gdc_2.cats_list
+    gdc_merged.gold_data_item_list = []
+
+    for gdi_1, gdi_2 in zip(gdc_1.gold_data_item_list, gdc_2.gold_data_item_list):
+        if gdi_1.article_id != gdi_2.article_id or gdi_1.text != gdi_2.text:
+            raise Exception()
+        else:
+            cats_merged = {}
+            cats_merged.update(gdi_1.cats)
+            cats_merged.update(gdi_2.cats)
+
+            gdc_merged.gold_data_item_list.append(
+                GoldDataItem(
+                    article_id=gdi_1.article_id,
+                    text=gdi_1.text,
+                    cats=cats_merged
+                )
+            )
+
+    return gdc_merged
+
+
+def reduce_to_overlap(gdc_1: GoldDataContainer, gdc_2: GoldDataContainer):
+
+    def remove_from_a(gdc_a: GoldDataContainer, gdc_b: GoldDataContainer):
+
+        i_to_remove = []
+        for i, c in enumerate(gdc_a.cats_list):
+            if c not in gdc_b.cats_list:
+                i_to_remove.append(i)
+        for i in i_to_remove[-1::-1]:
+            cat = gdc_a.cats_list[i]
+            for gdi in gdc_a.gold_data_item_list:
+                del gdi.cats[cat]
+            del gdc_a.cats_list[i]
+
+        return gdc_a
+
+    gdc_1 = remove_from_a(gdc_a=gdc_1, gdc_b=gdc_2)
+    gdc_2 = remove_from_a(gdc_a=gdc_2, gdc_b=gdc_1)
+
+    def verify(gdc_1: GoldDataContainer, gdc_2: GoldDataContainer):
+
+        if gdc_1.cats_list != gdc_2.cats_list:
+            raise Exception
+
+        for gdi_1 in gdc_1.gold_data_item_list:
+            for gdi_2 in gdc_2.gold_data_item_list:
+                if gdi_1.cats.keys() != gdi_2.cats.keys():
+                    raise Exception
+
+    return gdc_1, gdc_2

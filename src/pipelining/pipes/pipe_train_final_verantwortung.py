@@ -28,31 +28,18 @@ class ConfigTrain(ConfigRoot):
     exclusive_classes = model_def_dict["exclusive_classes"]
 
 
-def run():
+def load_and_transform_data():
 
     gdc_original = main.load_gold_data(ConfigLoad1)
     gdc_detailed = main.transform_gold_data(ConfigLoad1, gdc_original)
     gdc_grouped = main.transform_gold_data(ConfigLoad2, gdc_detailed.copy())
+    gdc_merged = gold_data_manager.extend_with_additional_cats(gdc_grouped, gdc_detailed)
 
-    gdc_merged = GoldDataContainer()
-    gdc_merged.cats_list = gdc_grouped.cats_list + gdc_detailed.cats_list
-    gdc_merged.gold_data_item_list = []
-    for gdi_detailed, gdi_grouped in zip(gdc_detailed.gold_data_item_list, gdc_grouped.gold_data_item_list):
-        if gdi_detailed.article_id != gdi_grouped.article_id or gdi_detailed.text != gdi_grouped.text:
-            raise Exception()
-        else:
-            cats_merged = {}
-            cats_merged.update(gdi_detailed.cats)
-            cats_merged.update(gdi_grouped.cats)
+    return gdc_merged
 
-            gdc_merged.gold_data_item_list.append(
-                GoldDataItem(
-                    article_id=gdi_detailed.article_id,
-                    text=gdi_detailed.text,
-                    cats=cats_merged
-                )
-            )
+def run():
 
+    gdc = load_and_transform_data()
 
-    trainer = main.init_trainer(ConfigTrain, cats_list=gdc_merged.cats_list)
-    main.run_training(ConfigTrain, trainer, gdc_merged)
+    trainer = main.init_trainer(ConfigTrain, cats_list=gdc.cats_list)
+    main.run_training(ConfigTrain, trainer, gdc)

@@ -26,6 +26,8 @@ class TransformConfigSM(ConfigRoot):
 
 def run():
 
+    # TODO Add abbreveations into group cats, e.g. 'V: Zuweisende Partei (ZP)' instead of 'V: Zuweisende Partei'
+
     gdc_sc = main.load_from_maxqdata(TransformConfigSC)
     gdc_sc = main.transform_gold_data(TransformConfigSC, gdc_sc)
     main.persist_gold_data(TransformConfigSC, gdc_sc)

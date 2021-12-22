@@ -32,42 +32,42 @@ class Config5(ConfigRoot):
     gold_data_json_path = data_flow_registry.gold_data["g8"]["path"]
     gold_data_transform_rule = gold_data_transform_rules.TransformRule10
 
-# class ConfigTrain(ConfigRoot):
-#
-#     should_create_model = True
-#     should_persist_model = True
-#     model_def_dict = data_flow_registry.models["mo10"]
-#     trainer_class = model_def_dict["trainer_class"]
-#     model_path = model_def_dict["path"]
-#     train_data_cutoff = model_def_dict["train_data_cutoff"]
-#     iteration_limit = model_def_dict["iteration_limit"]
-#     exclusive_classes = model_def_dict["exclusive_classes"]
-#
-#
-# def run():
-#
-#     gdc_1 = main.load_gold_data(Config1)
-#     gdc_1 = main.transform_gold_data(Config1, gdc_1)
-#     gdc = GoldDataContainer(cats_list=gdc_1.cats_list)
-#     gdc = gold_data_manager.merge_assuming_identical_categories(gdc, gdc_1)
-#
-#     gdc_2 = main.load_gold_data(Config2)
-#     gdc_2 = main.transform_gold_data(Config2, gdc_2)
-#     gdc = gold_data_manager.merge_assuming_identical_categories(gdc, gdc_2)
-#
-#     gdc_3 = main.load_gold_data(Config3)
-#     gdc_3 = main.transform_gold_data(Config3, gdc_3)
-#     gdc = gold_data_manager.merge_assuming_identical_categories(gdc, gdc_3)
-#
-#     gdc_4 = main.load_gold_data(Config4)
-#     gdc_4 = main.transform_gold_data(Config4, gdc_4)
-#     gdc = gold_data_manager.merge_assuming_identical_categories(gdc, gdc_4)
-#
-#     gdc_5 = main.load_gold_data(Config5)
-#     gdc_5 = main.transform_gold_data(Config5, gdc_5)
-#     gdc = gold_data_manager.merge_assuming_identical_categories(gdc, gdc_5)
-#
-#     trainer = main.init_trainer(ConfigTrain, cats_list=gdc.cats_list)
-#     main.run_training(config=ConfigTrain, trainer=trainer, gold_data_container=gdc)
+class ConfigTrain(ConfigRoot):
+
+    should_create_model = True
+    should_persist_model = True
+    model_def_dict = data_flow_registry.models["mo10"]
+    trainer_class = model_def_dict["trainer_class"]
+    model_path = model_def_dict["path"]
+    train_data_cutoff = model_def_dict["train_data_cutoff"]
+    iteration_limit = model_def_dict["iteration_limit"]
+    exclusive_classes = model_def_dict["exclusive_classes"]
+
+
+def run():
+
+    gdc_1 = main.load_gold_data(Config1)
+    gdc_1 = main.transform_gold_data(Config1, gdc_1)
+    gdc = GoldDataContainer(cats_list=gdc_1.cats_list)
+    gdc = gold_data_manager.merge_assuming_identical_categories(gdc, gdc_1)
+
+    gdc_2 = main.load_gold_data(Config2)
+    gdc_2 = main.transform_gold_data(Config2, gdc_2)
+    gdc = gold_data_manager.merge_assuming_identical_categories(gdc, gdc_2)
+
+    gdc_3 = main.load_gold_data(Config3)
+    gdc_3 = main.transform_gold_data(Config3, gdc_3)
+    gdc = gold_data_manager.merge_assuming_identical_categories(gdc, gdc_3)
+
+    gdc_4 = main.load_gold_data(Config4)
+    gdc_4 = main.transform_gold_data(Config4, gdc_4)
+    gdc = gold_data_manager.merge_assuming_identical_categories(gdc, gdc_4)
+
+    gdc_5 = main.load_gold_data(Config5)
+    gdc_5 = main.transform_gold_data(Config5, gdc_5)
+    gdc = gold_data_manager.merge_assuming_identical_categories(gdc, gdc_5)
+
+    trainer = main.init_trainer(ConfigTrain, cats_list=gdc.cats_list)
+    main.run_training(config=ConfigTrain, trainer=trainer, gold_data_container=gdc)
 
     embed()
