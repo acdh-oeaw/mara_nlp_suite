@@ -2,6 +2,7 @@ from etl import maxqdata_manager
 from etl.gold_data_transform_rules import *
 from indexer import model_indexer
 from trainer.trainer4 import Trainer4
+from pipelining import pipes
 
 amc_corpora = None
 maxqdata_data = None
@@ -478,48 +479,56 @@ evaluations_scores = {
         "path": "../data/evaluation_data/evaluations_final/es1.csv",
         "model": (models, "mo15"),
         "eval_data": (gold_data, "g9"),
+        "processing_pipe": pipes.pipe_evaluate_final_tonalitaet,
     },
     "es2": {
         "description": "Tonalität, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Media",
         "path": "../data/evaluation_data/evaluations_final/es2.csv",
         "model": (models, "mo15"),
         "eval_data": (gold_data, "g10"),
+        "processing_pipe": pipes.pipe_evaluate_final_tonalitaet,
     },
     "es3": {
         "description": "Verantwortung, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Companions",
         "path": "../data/evaluation_data/evaluations_final/es3.csv",
         "model": (models, "mo16"),
         "eval_data": (gold_data, "g9"),
+        "processing_pipe": pipes.pipe_evaluate_final_verantwortung,
     },
     "es4": {
         "description": "Verantwortung, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Media",
         "path": "../data/evaluation_data/evaluations_final/es4.csv",
         "model": (models, "mo16"),
         "eval_data": (gold_data, "g10"),
+        "processing_pipe": pipes.pipe_evaluate_final_verantwortung,
     },
     "es5": {
         "description": "Risiko, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Companions",
         "path": "../data/evaluation_data/evaluations_final/es5.csv",
         "model": (models, "mo17"),
         "eval_data": (gold_data, "g9"),
+        "processing_pipe": pipes.pipe_evaluate_final_risiko,
     },
     "es6": {
         "description": "Risiko, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Media",
         "path": "../data/evaluation_data/evaluations_final/es6.csv",
         "model": (models, "mo17"),
         "eval_data": (gold_data, "g10"),
+        "processing_pipe": pipes.pipe_evaluate_final_risiko,
     },
     "es7": {
         "description": "Anwendungsfeld Social Companions, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Companions",
         "path": "../data/evaluation_data/evaluations_final/es7.csv",
         "model": (models, "mo9"),
         "eval_data": (gold_data, "g9"),
+        "processing_pipe": pipes.pipe_evaluate_final_anwendungsfeld_sc,
     },
     "es8": {
         "description": "Anwendungsfeld Social Media, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Media",
         "path": "../data/evaluation_data/evaluations_final/es8.csv",
         "model": (models, "mo9"),
         "eval_data": (gold_data, "g10"),
+        "processing_pipe": pipes.pipe_evaluate_final_anwendungsfeld_sm,
     },
 }
 
@@ -529,48 +538,56 @@ evaluation_diffs = {
         "path": "../data/evaluation_data/evaluations_final/ed1.csv",
         "model": (models, "mo15"),
         "eval_data": (gold_data, "g9"),
+        "processing_pipe": pipes.pipe_evaluate_final_tonalitaet,
     },
     "ed2": {
         "description": "Tonamo16lität, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Media",
         "path": "../data/evaluation_data/evaluations_final/ed2.csv",
         "model": (models, "mo15"),
         "eval_data": (gold_data, "g10"),
+        "processing_pipe": pipes.pipe_evaluate_final_tonalitaet,
     },
     "ed3": {
         "description": "Verantwortung, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Companions",
         "path": "../data/evaluation_data/evaluations_final/ed3.csv",
         "model": (models, "mo16"),
         "eval_data": (gold_data, "g9"),
+        "processing_pipe": pipes.pipe_evaluate_final_verantwortung,
     },
     "ed4": {
         "description": "Verantwortung, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Media",
         "path": "../data/evaluation_data/evaluations_final/ed4.csv",
         "model": (models, "mo16"),
         "eval_data": (gold_data, "g10"),
+        "processing_pipe": pipes.pipe_evaluate_final_verantwortung,
     },
     "ed5": {
         "description": "Risiko, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Companions",
         "path": "../data/evaluation_data/evaluations_final/ed5.csv",
         "model": (models, "mo17"),
         "eval_data": (gold_data, "g9"),
+        "processing_pipe": pipes.pipe_evaluate_final_risiko,
     },
     "ed6": {
         "description": "Risiko, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Media",
         "path": "../data/evaluation_data/evaluations_final/ed6.csv",
         "model": (models, "mo17"),
         "eval_data": (gold_data, "g10"),
+        "processing_pipe": pipes.pipe_evaluate_final_risiko,
     },
     "ed7": {
         "description": "Anwendungsfeld Social Companions, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Companions",
         "path": "../data/evaluation_data/evaluations_final/ed7.csv",
         "model": (models, "mo9"),
         "eval_data": (gold_data, "g9"),
+        "processing_pipe": pipes.pipe_evaluate_final_anwendungsfeld_sc,
     },
     "ed8": {
         "description": "Anwendungsfeld Social Media, evaluiert auf Texte aus Vertiefungsanalyse bezüglich Social Media",
         "path": "../data/evaluation_data/evaluations_final/ed8.csv",
         "model": (models, "mo9"),
         "eval_data": (gold_data, "g10"),
+        "processing_pipe": pipes.pipe_evaluate_final_anwendungsfeld_sm,
     },
 }
 
