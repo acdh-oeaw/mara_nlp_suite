@@ -1,0 +1,2 @@
+Category;Precision;Recall;F-Score;True Positives;False Positives;True Negatives;False Negatives;Evaluation Positives;Evaluation Negatives;Training Positives;Training Negatives
+AF: Soziale Medien;0.8263;0.8945;0.859;195;41;11;23;218;52;303;2802

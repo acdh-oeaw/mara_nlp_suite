@@ -1,0 +1,5 @@
+Category;Precision;Recall;F-Score;True Positives;False Positives;True Negatives;False Negatives;Evaluation Positives;Evaluation Negatives;Training Positives;Training Negatives
+T: negativ;0.7584;0.8248;0.7902;113;36;30;24;137;66;388;1935
+T: ambivalent;0;0.0;0;0;0;162;41;41;162;175;2148
+T: positiv;0.3636;0.4;0.381;8;14;169;12;20;183;854;1469
+T: keine Tonalität ggü. KI, Algorithmen, Automatisierung;0.0625;0.3333;0.1053;2;30;167;4;6;197;908;1415

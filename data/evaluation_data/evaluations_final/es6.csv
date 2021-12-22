@@ -1,0 +1,21 @@
+Category;Precision;Recall;F-Score;True Positives;False Positives;True Negatives;False Negatives;Evaluation Positives;Evaluation Negatives;Training Positives;Training Negatives
+R: Risikotypen;0.7692;0.7921;0.7805;160;48;20;42;202;68;459;1040
+R: RT: Datenschutz, Privatsphäre, Überwachung;0.5294;0.1324;0.2118;9;8;194;59;68;202;40;1459
+R: RT: Haftung/Verantwortung;0.0;0.0;0;0;1;260;9;9;261;18;1481
+R: RT: Manipulation, Verzerrung, Unwahrh, Filterblas, Polarisieru, Zen;0.8438;0.2213;0.3506;27;5;143;95;122;148;36;1463
+R: RT: Souv-/Autonomie/Kontrollverlust,Fremdbest.,Überlegenh,Macht/Ein;0.2667;0.1818;0.2162;4;11;237;18;22;248;78;1421
+R: RT: Intransparenz (Blackbox);0.8;0.08;0.1455;4;1;219;46;50;220;24;1475
+R: RT: Kommodifizierung der Nutzer (Ausbeutung);0;0.0;0;0;0;255;15;15;255;9;1490
+R: RT: Sozialität, Entfremdung vom Natürlichen, Lebenssinn, uncanny;0.0;0.0;0;0;1;263;6;6;264;39;1460
+R: RT: Diskriminierung, Ungleichheit;0.3333;0.0303;0.0556;1;2;235;32;33;237;23;1476
+R: RT: mangelnde Qualität der Automatisierung, Algorithmen, Ki;0.1098;0.2812;0.1579;9;73;165;23;32;238;161;1338
+R: RT: Missbrauch d KI, Algorith durch Staat, Unternehm,Interessengrup;0.1818;0.0488;0.0769;2;9;220;39;41;229;27;1472
+R: RT: ethisch, moralisch, philosophische Fragen der KI, Algorithmen;0.1852;0.2174;0.2;5;22;225;18;23;247;80;1419
+R: RT: Sicherheit (Safety), Unfälle, körperliche/psychische Sicherheit;0.0;0.0;0;0;1;266;3;3;267;47;1452
+R: RT: IT-/KI-Security (Sicherheit vor Hackern etc);0.0;0.0;0;0;1;267;2;2;268;15;1484
+R: RT: Ungleichheit bei Sozialabgaben / Steuergerechtigkeit;0.0;0.0;0;0;3;265;2;2;268;13;1486
+R: RT: Wirtschaftlichkeit und Effizienz;0.0;0.0;0;0;2;266;2;2;268;42;1457
+R: RT: mangelnde Adaption/Literacy/Ausbildung/Bildung;0.1111;0.125;0.1176;1;8;254;7;8;262;45;1454
+R: RT: mangelnde Adpation v. Industrie, Wirtschaft, Volkswirtschaft;0.0;0.0;0;0;11;253;6;6;264;62;1437
+R: RT: Arbeitsplatzverluste / Zukünftige Arbeit;0.0333;0.125;0.0526;1;29;233;7;8;262;101;1398
+R: RT: Marktmacht, Monopolisierung;0.2222;0.0645;0.1;2;7;232;29;31;239;20;1479
