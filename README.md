@@ -1,4 +1,4 @@
-## mara_nlp_suite (alpha)
+## mara_nlp_suite
 
 This repository encompasses the unified NLP research platform for the project [MARA: MEDIA REPORTING ON ALGORITHMS, ROBOTICS AND ARTIFICIAL INTELLIGENCE](https://www.oeaw.ac.at/cmc/research/media-accountability-media-change-mamc/media-ethics-and-media-accountability/triple-a-algorithms-automation-accountability/risks-and-responsibility-in-the-automation-debate-mara/) funded by the Austrian Academy of Sciences’ [go!digital Next Generation program for excellent research in digital humanities](https://www.oeaw.ac.at/foerderungen/godigital/godigital-next-generation).
 
