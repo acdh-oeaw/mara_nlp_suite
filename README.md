@@ -4,12 +4,15 @@ This repository encompasses the unified NLP research platform for the project [M
 
 In this repo almost all code and (soon) nlp models are stored and published in a transparent and reproducible way.
 
-**This repository is work in progress! Hence for now there are following limitations:**
+## final report
 
-* no original newspaper texts are stored here due to pending coypright agreements
-* no nlp models are stored yet due to technical limitations in terms of storage of github (soon to come)
-* little technical documentation, no comments, and on no guarantee on full stability (soon to come)
+The final report of this project with in-depth qualitative analysis can be found [here](https://www.oeaw.ac.at/cmc/detail/news/media-coverage-of-risks-and-responsibility-in-the-automation-debate).
 
+## About this repository
+
+Here all the technical implementations are aggretated and all the produced data can be traced throughout their lifecycles. 
+
+However no original newspaper texts are stored here due to coypright agreements with the AMC.
 
 ## External dependencies / sources and tools:
 
